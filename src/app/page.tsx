@@ -1,4 +1,11 @@
-import { newsreader } from "./layout";
+import { Newsreader } from "next/font/google";
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  style: "italic",
+  display: "swap",
+  adjustFontFallback: false,
+});
 
 const quote = <Quote textData={`"Homo faber suae quisque fortunae."`} />;
 
