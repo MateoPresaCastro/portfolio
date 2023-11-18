@@ -16,11 +16,16 @@ const config: Config = {
     },
     animation: {
       fadeIn: "fadeIn 0.75s ease-in",
+      moveUp: "moveUp 0.75s ease-in",
     },
     keyframes: {
       fadeIn: {
         "0%": { opacity: "0" },
         "100%": { opacity: "1" },
+      },
+      moveUp: {
+        "0%": { transform: "translateY(10px)" },
+        "100%": { transform: "none" },
       },
     },
   },
