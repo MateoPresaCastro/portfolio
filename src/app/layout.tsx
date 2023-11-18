@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Newsreader } from "next/font/google";
 import "./globals.css";
 
+export const newsreader = Newsreader({ subsets: ["latin"], style: "italic" });
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
