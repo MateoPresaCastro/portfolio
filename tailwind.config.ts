@@ -15,8 +15,8 @@ const config: Config = {
       },
     },
     animation: {
-      fadeIn: "fadeIn 0.75s ease-in",
-      moveUp: "moveUp 0.75s ease-in",
+      fadeIn: "fadeIn 0.9s ease-in forwards",
+      moveUp: "moveUp 0.2s ease-in forwards",
     },
     keyframes: {
       fadeIn: {
