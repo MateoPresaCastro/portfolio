@@ -15,6 +15,9 @@
     --background-end-rgb: 23, 23, 23;
   }
 }
+::selection {
+  background: rgb(37 37 37)
+}
 
 body {
   color: rgb(var(--foreground-rgb));
