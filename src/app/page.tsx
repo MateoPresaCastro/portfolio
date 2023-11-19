@@ -1,13 +1,18 @@
-import { Newsreader } from "next/font/google";
+import { Newsreader, Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 const newsreader = Newsreader({
   subsets: ["latin"],
   style: "italic",
-  display: "swap",
-  adjustFontFallback: false,
 });
 
-const quote = <Quote textData={`"Homo faber suae quisque fortunae."`} />;
+const quote = (
+  <Quote
+    textData={`"Well, in art, as in everything else, one can build only upon a resistant foundation. Whatever constantly gives way to pressure renders movement impossible."`}
+    author={`Igor Stravinsky`}
+  />
+);
 
 const data = [
   {
@@ -23,7 +28,9 @@ const data = [
         </span>
         {". Sound and software construction. "}
         <span className={`${newsreader.className} text-[19px]`}></span>
-        <div className={`${newsreader.className} text-[19px]`}>{quote}</div>
+        <div className="flex flex-row items-center justify-center">
+          <div className={`${newsreader.className}`}>{quote}</div>
+        </div>
       </div>
     ),
   },
@@ -72,6 +79,8 @@ function Card({
 }) {
   const titleDelay = getDelay(0.3, 1.7);
   const contentDelay = getDelay(0.6 + titleDelay, 1.3 + titleDelay);
+  // const titleDelay = getDelay(0, 0);
+  // const contentDelay = getDelay(0, 0);
   return (
     <>
       <div
@@ -79,7 +88,7 @@ function Card({
         style={{ animationDelay: `${titleDelay}s` }}
       >
         <h1
-          className="animate-fadeIn text-lg opacity-0"
+          className="animate-fadeIn font-semibold opacity-0"
           style={{ animationDelay: `${titleDelay}s` }}
         >
           {title}
@@ -103,13 +112,16 @@ function getDelay(min: number, max: number) {
   return Math.random() * (max - min) + min;
 }
 
-function Quote({ textData }: { textData: string }) {
+function Quote({ textData, author }: { textData: string; author: string }) {
   return (
-    <div className="mt-3 flex flex-row items-center justify-start">
-      <div className="h-10 w-0.5 bg-neutral-800"></div>
-      <p className="ml-5 text-center text-lg text-neutral-400 transition duration-300 ease-in-out hover:text-neutral-300">
-        {textData}
-      </p>
-    </div>
+    <>
+      <div className="mt-5 flex flex-row items-center justify-start">
+        <div className="h-10 w-1 bg-neutral-800"></div>
+        <div className="ml-10 mr-16 flex flex-col">
+          <p className="text-start text-neutral-400">{textData}</p>
+          <p className="mt-1 text-left text-neutral-400">- Igor Stravinsky</p>
+        </div>
+      </div>
+    </>
   );
 }

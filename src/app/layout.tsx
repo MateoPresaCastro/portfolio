@@ -6,7 +6,6 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Mateo Presa Castro",
-  description: "Pursuing purpose, truth, and beauty.",
 };
 
 export default function RootLayout({
