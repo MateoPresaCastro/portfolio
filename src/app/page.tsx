@@ -23,7 +23,7 @@ const data = [
     content: (
       <div>
         {/* Pursuing the{" "} */}
-        <span className={`${newsreader.className} text-[19px]`}>Sound</span>,
+        <span className={`${newsreader.className} text-[19px]`}>Music</span>,
         and
         <span className={`${newsreader.className} text-[19px]`}>
           {" "}
