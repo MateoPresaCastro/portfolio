@@ -120,8 +120,8 @@ function Quote({ textData, author }: { textData: string; author: string }) {
     <>
       <div className="mt-5 flex flex-row items-center justify-start">
         <div className="h-10 w-1 bg-neutral-800"></div>
-        <div className="ml-10 mr-16 flex flex-col">
-          <p className="text-start text-neutral-400">{textData}</p>
+        <div className="ml-4 flex flex-col">
+          <p className="text-start text-base leading-relaxed text-neutral-400">{textData}</p>
           <p className="mt-1 text-left text-neutral-400">- Igor Stravinsky</p>
         </div>
       </div>
