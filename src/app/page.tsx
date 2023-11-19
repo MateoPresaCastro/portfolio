@@ -22,18 +22,22 @@ const data = [
     title: "Mateo Presa Castro",
     content: (
       <div>
-        Pursuing the{" "}
-        <span className={`${newsreader.className} text-[19px]`}>true</span>, the
-        <span className={`${newsreader.className} text-[19px]`}> good</span> and
-        the
+        {/* Pursuing the{" "} */}
+        <span className={`${newsreader.className} text-[19px]`}>Sound</span>,
+        and
+        <span className={`${newsreader.className} text-[19px]`}>
+          {" "}
+          software.
+        </span>
+        {/* the
         <span className={`${newsreader.className} text-[19px]`}>
           {" beautiful"}
         </span>
         {". Sound and software construction. "}
-        <span className={`${newsreader.className} text-[19px]`}></span>
-        <div className="flex flex-row items-center justify-center">
+        <span className={`${newsreader.className} text-[19px]`}></span> */}
+        {/* <div className="flex flex-row items-center justify-center">
           <div className={`${newsreader.className}`}>{quote}</div>
-        </div>
+        </div> */}
       </div>
     ),
   },
@@ -87,7 +91,7 @@ function Card({
   return (
     <>
       <div
-        className="animate-moveUp translate-y-[10px]"
+        className="translate-y-[10px] animate-moveUp"
         style={{ animationDelay: `${titleDelay}s` }}
       >
         <h1
