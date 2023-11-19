@@ -1,5 +1,8 @@
 import { Newsreader, Inter } from "next/font/google";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 const inter = Inter({ subsets: ["latin"] });
 
 const newsreader = Newsreader({
