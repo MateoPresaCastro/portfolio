@@ -52,23 +52,32 @@ const data = [
   {
     title: "Connect",
     content: "mateopresacastro@gmail.com",
-    customClass: "no-underline hover:underline",
+    customClass: "no-underline hover:underline transition-all duration-300",
   },
 ];
 
+let delay = 0;
 export default function Home() {
   return (
     <main className="flex flex-grow items-center justify-center bg-neutral-900">
       <div className="m-10">
         <div className="max-w-2xl text-neutral-300">
-          {data.map((d) => (
-            <Card
-              key={d.title}
-              title={d.title}
-              content={d.content}
-              customClass={d.customClass}
-            />
-          ))}
+          {data.map((d, i) => {
+            console.log("here");
+            if (i !== 0) {
+              delay += 0.4;
+            }
+            console.log({ delay, i });
+            return (
+              <Card
+                key={d.title}
+                title={d.title}
+                content={d.content}
+                customClass={d.customClass}
+                delay={delay}
+              />
+            );
+          })}
         </div>
       </div>
     </main>
@@ -79,34 +88,39 @@ function Card({
   title,
   content,
   customClass,
+  delay,
 }: {
   title: string;
   content: string | React.JSX.Element;
   customClass?: string;
+  delay: number;
 }) {
-  const titleDelay = getDelay(0.3, 1.7);
-  const contentDelay = getDelay(0.6 + titleDelay, 1.3 + titleDelay);
+  //   const titleDelay = getDelay(0.3, 1.7);
+  //   const contentDelay = getDelay(0.6 + titleDelay, 1.3 + titleDelay);
   // const titleDelay = getDelay(0, 0);
   // const contentDelay = getDelay(0, 0);
   return (
     <>
       <div
         className="translate-y-[10px] animate-moveUp"
-        style={{ animationDelay: `${titleDelay}s` }}
+        style={{ animationDelay: `${delay}s` }}
       >
         <h1
           className="animate-fadeIn font-semibold opacity-0"
-          style={{ animationDelay: `${titleDelay}s` }}
+          style={{ animationDelay: `${delay}s` }}
         >
           {title}
         </h1>
       </div>
-      <div className="translate-y-[10px]">
+      <div
+        className="translate-y-[10px] animate-moveUp"
+        style={{ animationDelay: `${delay}s` }}
+      >
         <div
           className={`mb-16 font-light opacity-0 ${
             customClass ?? ""
           } animate-fadeIn`}
-          style={{ animationDelay: `${contentDelay}s` }}
+          style={{ animationDelay: `${delay}s` }}
         >
           {content}
         </div>
