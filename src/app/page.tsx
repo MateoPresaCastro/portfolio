@@ -58,7 +58,7 @@ const data = [
 
 export default function Home() {
   return (
-    <main className="flex h-screen items-center justify-center bg-neutral-900">
+    <main className="flex flex-grow items-center justify-center bg-neutral-900">
       <div className="m-10">
         <div className="max-w-2xl text-neutral-300">
           {data.map((d) => (
@@ -124,11 +124,11 @@ function Quote({ textData, author }: { textData: string; author: string }) {
     <>
       <div className="mt-5 flex flex-row items-center justify-start">
         <div className="h-10 w-1 bg-neutral-800"></div>
-        <div className="ml-4 flex flex-col text-[19px]">
+        <div className="text-s ml-4 flex flex-col">
           <p className="text-start leading-relaxed text-neutral-400">
             {textData}
           </p>
-          <p className="mt-1 text-left text-neutral-400">- Igor Stravinsky</p>
+          <p className="mt-1 text-left text-neutral-200">- Igor Stravinsky</p>
         </div>
       </div>
     </>
