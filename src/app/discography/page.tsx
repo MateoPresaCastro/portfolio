@@ -45,14 +45,14 @@ export default function Discography() {
               align: "start",
               loop: true,
             }}
-            className="w-full max-w-sm"
+            className="md:w-full lg:md:w-full w-72 max-w-sm"
             plugins={[Autoplay()]}
           >
             <CarouselContent>
               {images.map(({ image, album, artist, song }, index) => (
                 <CarouselItem
                   key={index}
-                  className="basis-56 md:basis-96 lg:basis-96"
+                  className="basis-96 md:basis-96"
                 >
                   <div>
                     <Image src={image} alt="testing" unoptimized />
