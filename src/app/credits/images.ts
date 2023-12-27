@@ -24,7 +24,7 @@ interface ImageData {
 
 const images: ImageData[] = [
   {
-    image: el2,
+    image: el1,
     album: "SEN2 KBRN, VOL. 2",
     artist: "Eladio Carrion",
     song: "HP Freestyle",
@@ -36,7 +36,7 @@ const images: ImageData[] = [
     song: "Waves",
     year: "2022",
   },
-  { image: el1, artist: "Eladio Carrion", song: "Red Bull", year: "2021" },
+  { image: el2, artist: "Eladio Carrion", song: "Red Bull", year: "2021" },
   {
     image: reezy,
     album: "WEISSWEIN & HEARTBREAKS",
