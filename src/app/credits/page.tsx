@@ -40,7 +40,7 @@ export default function Discography() {
                       width={500}
                       height={500}
                       alt="testing"
-                      unoptimized
+                      // unoptimized
                     />
                     <div className="flex justify-center">
                       <div className="mt-2">
