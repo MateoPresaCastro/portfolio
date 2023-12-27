@@ -1,42 +1,5 @@
-import { Newsreader } from "next/font/google";
 import Link from "next/link";
-
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  style: "italic",
-});
-
-const data = [
-  {
-    title: "Mateo Presa Castro",
-    content: (
-      <div>
-        <span className={`${newsreader.className} text-[19px]`}>Music</span> and
-        <span className={`${newsreader.className} text-[19px]`}>
-          {" "}
-          software.
-        </span>
-      </div>
-    ),
-  },
-  {
-    title: "Current position",
-    content: "Software engineer @ Viaplay's payments team.",
-  },
-  {
-    title: "Credits",
-    titleClass:
-      "cursor-pointer underline underline-offset-[2.5px] decoration-neutral-600 hover:decoration-neutral-400 w-auto transition-all duration-300 decoration-1",
-    content: "Reezy, Eladio Carrion, Morad, Yung Beef...",
-    isTitleLink: true,
-  },
-  {
-    title: "Connect",
-    content: "mateopresacastro@gmail.com",
-    descClass:
-      "cursor-pointer underline underline-offset-[2.5px] decoration-neutral-600 hover:decoration-neutral-400 w-auto transition-all duration-300 decoration-1",
-  },
-];
+import data from "./data";
 
 export default function Home() {
   let delay = 0;
@@ -47,7 +10,7 @@ export default function Home() {
           {data.map((d, i) => {
             delay = i * 0.1;
             return (
-              <Card
+              <Section
                 key={d.title}
                 title={d.title}
                 content={d.content}
@@ -64,7 +27,7 @@ export default function Home() {
   );
 }
 
-function Card({
+function Section({
   title,
   content,
   descClass,

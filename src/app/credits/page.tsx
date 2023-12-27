@@ -40,7 +40,7 @@ export default function Discography() {
                       height={500}
                       alt="testing"
                       priority
-                      unoptimized
+                      // unoptimized
                     />
                     <div className="flex justify-start">
                       <div className="mt-2">
