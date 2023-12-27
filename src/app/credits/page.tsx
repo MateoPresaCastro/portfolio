@@ -32,14 +32,23 @@ export default function Discography() {
             className="w-72 max-w-sm md:w-full lg:md:w-full"
           >
             <CarouselContent>
-              {images.map(({ image, album, artist, song }, index) => (
+              {images.map(({ image, album, artist, song, year }, index) => (
                 <CarouselItem key={index} className="basis-72 md:basis-96">
                   <div>
-                    <Image src={image} alt="testing" unoptimized />
+                    <Image
+                      src={image}
+                      width={500}
+                      height={500}
+                      alt="testing"
+                      unoptimized
+                    />
                     <div className="flex justify-center">
                       <div className="mt-2">
                         <p className="text-neutral-300">{`${artist} - ${song}`}</p>
                         <p className="className= text-neutral-500">{album}</p>
+                        <p className="className= text-xs text-neutral-500">
+                          {year}
+                        </p>
                       </div>
                     </div>
                   </div>

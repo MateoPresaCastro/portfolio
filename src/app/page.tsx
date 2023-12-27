@@ -24,7 +24,7 @@ const data = [
     content: "Software engineer @ Viaplay's payments team.",
   },
   {
-    title: "Discography",
+    title: "Credits",
     titleClass:
       "cursor-pointer underline underline-offset-[2.5px] decoration-neutral-600 hover:decoration-neutral-400 w-auto transition-all duration-300 decoration-1",
     content: "Reezy, Eladio Carrion, Morad, Yung Beef...",
