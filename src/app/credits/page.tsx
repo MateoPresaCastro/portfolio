@@ -17,12 +17,11 @@ export default function Discography() {
     <div className="flex flex-grow items-center justify-center bg-neutral-900">
       <div className="m-10">
         <div className="max-w-2xl text-neutral-300">
-          <Link
-            href="/"
-            className="mb-2 flex w-auto cursor-pointer items-center underline decoration-neutral-600 decoration-1 underline-offset-[2.5px] transition-all duration-300 hover:decoration-neutral-400"
-          >
+          <Link href="/" className="mb-2 flex w-16 items-center">
             <ArrowLeftIcon />
-            <p className="ml-1">Back</p>
+            <p className="ml-1 w-auto cursor-pointer underline decoration-neutral-600 decoration-1 underline-offset-[2.5px] transition-all duration-300 hover:decoration-neutral-400">
+              Back
+            </p>
           </Link>
           <Carousel
             opts={{
