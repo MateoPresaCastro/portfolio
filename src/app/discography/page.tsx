@@ -45,20 +45,17 @@ export default function Discography() {
               align: "start",
               loop: true,
             }}
-            className="md:w-full lg:md:w-full w-72 max-w-sm"
+            className="w-72 max-w-sm md:w-full lg:md:w-full"
             plugins={[Autoplay()]}
           >
             <CarouselContent>
               {images.map(({ image, album, artist, song }, index) => (
-                <CarouselItem
-                  key={index}
-                  className="basis-96 md:basis-96"
-                >
+                <CarouselItem key={index} className="basis-72 md:basis-96">
                   <div>
                     <Image src={image} alt="testing" unoptimized />
                     <div className="flex justify-center">
                       <div className="mt-2">
-                        <p className=" font-semibold text-neutral-300">{`${artist} - ${song}`}</p>
+                        <p className="font-semibold text-neutral-300">{`${artist} - ${song}`}</p>
                         <p className="className= text-neutral-500">{album}</p>
                       </div>
                     </div>
