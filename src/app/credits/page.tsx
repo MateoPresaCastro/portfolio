@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/carousel";
 import Link from "next/link";
 
-export default function Discography() {
+export default function Credits() {
   return (
     <div className="flex flex-grow items-center justify-center bg-neutral-900">
       <div className="m-10">
@@ -38,9 +38,9 @@ export default function Discography() {
                       src={image}
                       width={500}
                       height={500}
-                      alt="testing"
+                      alt="Song cover art"
                       priority
-                      // unoptimized
+                      unoptimized
                     />
                     <div className="flex justify-start">
                       <div className="mt-2">
