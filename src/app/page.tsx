@@ -90,7 +90,7 @@ function Card({
           style={{ animationDelay: `${delay}s` }}
         >
           {isTitleLink ? (
-            <Link href="/discography">{title}</Link>
+            <Link href="/credits">{title}</Link>
           ) : (
             <div>{title}</div>
           )}
