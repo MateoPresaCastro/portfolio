@@ -27,7 +27,7 @@ const config: Config = {
         "100%": { opacity: "1" },
       },
       moveUp: {
-        "0%": { transform: "translateY(10px)" },
+        "0%": { transform: "translateY(5px)" },
         "100%": { transform: "none" },
       },
     },

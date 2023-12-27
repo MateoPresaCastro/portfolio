@@ -10,34 +10,17 @@ const newsreader = Newsreader({
   style: "italic",
 });
 
-const quote = (
-  <Quote
-    textData={`"Well, in art, as in everything else, one can build only upon a resistant foundation. Whatever constantly gives way to pressure renders movement impossible."`}
-    author={`Igor Stravinsky`}
-  />
-);
-
 const data = [
   {
     title: "Mateo Presa Castro",
     content: (
       <div>
-        {/* Pursuing the{" "} */}
         <span className={`${newsreader.className} text-[19px]`}>Music</span>,
         and
         <span className={`${newsreader.className} text-[19px]`}>
           {" "}
           software.
         </span>
-        {/* the
-        <span className={`${newsreader.className} text-[19px]`}>
-          {" beautiful"}
-        </span>
-        {". Sound and software construction. "}
-        <span className={`${newsreader.className} text-[19px]`}></span> */}
-        {/* <div className="flex flex-row items-center justify-center">
-          <div className={`${newsreader.className}`}>{quote}</div>
-        </div> */}
       </div>
     ),
   },
@@ -56,18 +39,16 @@ const data = [
   },
 ];
 
-let delay = 0;
 export default function Home() {
+  let delay = 0;
   return (
     <main className="flex flex-grow items-center justify-center bg-neutral-900">
       <div className="m-10">
         <div className="max-w-2xl text-neutral-300">
           {data.map((d, i) => {
-            console.log("here");
             if (i !== 0) {
-              delay += 0.4;
+              delay += 0.1;
             }
-            console.log({ delay, i });
             return (
               <Card
                 key={d.title}
@@ -95,10 +76,6 @@ function Card({
   customClass?: string;
   delay: number;
 }) {
-  //   const titleDelay = getDelay(0.3, 1.7);
-  //   const contentDelay = getDelay(0.6 + titleDelay, 1.3 + titleDelay);
-  // const titleDelay = getDelay(0, 0);
-  // const contentDelay = getDelay(0, 0);
   return (
     <>
       <div
