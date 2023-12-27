@@ -1,9 +1,4 @@
-import { Newsreader, Inter } from "next/font/google";
-
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
-
-const inter = Inter({ subsets: ["latin"] });
+import { Newsreader } from "next/font/google";
 
 const newsreader = Newsreader({
   subsets: ["latin"],
@@ -29,13 +24,16 @@ const data = [
     content: "Software engineer @ Viaplay's payments team.",
   },
   {
-    title: "Sound influences",
-    content: "Curtis Roads, Igor Stravinsky, Travis Scott, Drake.",
+    title: "Discography",
+    titleClass:
+      "cursor-pointer underline underline-offset-[2.5px] decoration-neutral-600 hover:decoration-neutral-400 w-auto transition-all duration-300 decoration-1",
+    content: "Reezy, Eladio Carrion, Morad, Yung Beef...",
   },
   {
     title: "Connect",
     content: "mateopresacastro@gmail.com",
-    customClass: "no-underline hover:underline transition-all duration-300",
+    descClass:
+      "cursor-pointer underline underline-offset-[2.5px] decoration-neutral-600 hover:decoration-neutral-400 w-auto transition-all duration-300 decoration-1",
   },
 ];
 
@@ -46,15 +44,14 @@ export default function Home() {
       <div className="m-10">
         <div className="max-w-2xl text-neutral-300">
           {data.map((d, i) => {
-            if (i !== 0) {
-              delay += 0.1;
-            }
+            delay = i * 0.1;
             return (
               <Card
                 key={d.title}
                 title={d.title}
                 content={d.content}
-                customClass={d.customClass}
+                descClass={d.descClass}
+                titleClass={d.titleClass}
                 delay={delay}
               />
             );
@@ -68,14 +65,17 @@ export default function Home() {
 function Card({
   title,
   content,
-  customClass,
+  descClass,
+  titleClass,
   delay,
 }: {
   title: string;
   content: string | React.JSX.Element;
-  customClass?: string;
+  descClass?: string;
+  titleClass?: string;
   delay: number;
 }) {
+  console.log(titleClass);
   return (
     <>
       <div
@@ -83,7 +83,7 @@ function Card({
         style={{ animationDelay: `${delay}s` }}
       >
         <h1
-          className="animate-fadeIn font-semibold opacity-0"
+          className={`animate-fadeIn opacity-0 ${titleClass ?? ""}`}
           style={{ animationDelay: `${delay}s` }}
         >
           {title}
@@ -94,32 +94,12 @@ function Card({
         style={{ animationDelay: `${delay}s` }}
       >
         <div
-          className={`mb-16 font-light opacity-0 ${
-            customClass ?? ""
+          className={`mb-16 font-light text-neutral-400 opacity-0 ${
+            descClass ?? ""
           } animate-fadeIn`}
           style={{ animationDelay: `${delay}s` }}
         >
           {content}
-        </div>
-      </div>
-    </>
-  );
-}
-
-function getDelay(min: number, max: number) {
-  return Math.random() * (max - min) + min;
-}
-
-function Quote({ textData, author }: { textData: string; author: string }) {
-  return (
-    <>
-      <div className="mt-5 flex flex-row items-center justify-start">
-        <div className="h-10 w-1 bg-neutral-800"></div>
-        <div className="text-s ml-4 flex flex-col">
-          <p className="text-start leading-relaxed text-neutral-400">
-            {textData}
-          </p>
-          <p className="mt-1 text-left text-neutral-200">- Igor Stravinsky</p>
         </div>
       </div>
     </>
