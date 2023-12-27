@@ -41,9 +41,9 @@ export default function Discography() {
                       height={500}
                       alt="testing"
                       priority
-                      // unoptimized
+                      unoptimized
                     />
-                    <div className="flex justify-center">
+                    <div className="flex justify-start">
                       <div className="mt-2">
                         <p className="text-neutral-300">{`${artist} - ${song}`}</p>
                         <p className="className= text-neutral-500">{album}</p>
