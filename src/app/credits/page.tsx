@@ -1,10 +1,8 @@
 "use client";
 import * as React from "react";
-import Image, { type StaticImageData } from "next/image";
-import Autoplay from "embla-carousel-autoplay";
-import reezy from "../../../public/reezy.jpg";
-import el1 from "../../../public/eladio-hp.png";
-import el2 from "../../../public/eladio beny redbull.jpeg";
+import Image from "next/image";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import images from "./images";
 import {
   Carousel,
   CarouselContent,
@@ -12,41 +10,26 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-
-interface ImageData {
-  image: StaticImageData;
-  song: string;
-  album?: string;
-  artist: string;
-}
-const images: ImageData[] = [
-  {
-    image: reezy,
-    album: "WEISSWEIN & HEARTBREAKS",
-    artist: "Reezy",
-    song: "FRAU VON WELT / NO CAP",
-  },
-  { image: el1, artist: "Eladio Carrion", song: "Red Bull" },
-  {
-    image: el2,
-    album: "SEN2 KBRN, VOL. 2",
-    artist: "Eladio Carrion",
-    song: "HP Freestyle",
-  },
-];
+import Link from "next/link";
 
 export default function Discography() {
   return (
     <div className="flex flex-grow items-center justify-center bg-neutral-900">
       <div className="m-10">
         <div className="max-w-2xl text-neutral-300">
+          <Link
+            href="/"
+            className="mb-2 flex w-auto cursor-pointer items-center underline decoration-neutral-600 decoration-1 underline-offset-[2.5px] transition-all duration-300 hover:decoration-neutral-400"
+          >
+            <ArrowLeftIcon />
+            <p className="ml-1">Back</p>
+          </Link>
           <Carousel
             opts={{
               align: "start",
               loop: true,
             }}
             className="w-72 max-w-sm md:w-full lg:md:w-full"
-            plugins={[Autoplay()]}
           >
             <CarouselContent>
               {images.map(({ image, album, artist, song }, index) => (
@@ -55,7 +38,7 @@ export default function Discography() {
                     <Image src={image} alt="testing" unoptimized />
                     <div className="flex justify-center">
                       <div className="mt-2">
-                        <p className="font-semibold text-neutral-300">{`${artist} - ${song}`}</p>
+                        <p className="text-neutral-300">{`${artist} - ${song}`}</p>
                         <p className="className= text-neutral-500">{album}</p>
                       </div>
                     </div>
@@ -63,8 +46,14 @@ export default function Discography() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious variant={"ghost"} />
-            <CarouselNext variant={"ghost"} />
+            <CarouselPrevious
+              variant={"ghost"}
+              className="text-neutral-300 transition-all duration-300 hover:bg-neutral-900 hover:text-neutral-500"
+            />
+            <CarouselNext
+              variant={"ghost"}
+              className="text-neutral-300 transition-all duration-300 hover:bg-neutral-900 hover:text-neutral-500"
+            />
           </Carousel>
         </div>
       </div>
