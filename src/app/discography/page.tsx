@@ -1,8 +1,10 @@
 "use client";
 import * as React from "react";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
+import Autoplay from 'embla-carousel-autoplay'
 import reezy from "../../../public/reezy.jpg";
-import { Card, CardContent } from "@/components/ui/card";
+import el1 from "../../../public/eladio-hp.png";
+import el2 from "../../../public/eladio beny redbull.jpeg";
 import {
   Carousel,
   CarouselContent,
@@ -11,6 +13,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
+const images: StaticImageData[] = [reezy, el1, el2];
 export default function Discography() {
   return (
     <div className="flex flex-grow items-center justify-center bg-neutral-900">
@@ -19,32 +22,20 @@ export default function Discography() {
           <Carousel
             opts={{
               align: "start",
+              loop: true,
             }}
             className="w-full max-w-sm"
+            plugins={[Autoplay()]}
           >
             <CarouselContent>
-              {Array.from({ length: 5 }).map((_, index) => (
+              {images.map((image, index) => (
                 <CarouselItem key={index} className="basis-96">
-                  <div className="p-1">
-                    <Card>
-                      <CardContent className="flex aspect-square items-center justify-center p-6">
-                        <span className="text-3xl font-semibold">
-                          {index + 1}
-                        </span>
-                        <Image
-                          src="/reezy.jpg"
-                          height={500}
-                          width={500}
-                          alt="testing"
-                        />
-                      </CardContent>
-                    </Card>
-                  </div>
+                  <Image src={image} alt="testing" unoptimized />
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious variant={"ghost"}/>
+            <CarouselNext variant={"ghost"}/>
           </Carousel>
         </div>
       </div>

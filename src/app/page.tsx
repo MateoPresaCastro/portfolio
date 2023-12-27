@@ -1,4 +1,5 @@
 import { Newsreader } from "next/font/google";
+import Link from "next/link";
 
 const newsreader = Newsreader({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ const data = [
     titleClass:
       "cursor-pointer underline underline-offset-[2.5px] decoration-neutral-600 hover:decoration-neutral-400 w-auto transition-all duration-300 decoration-1",
     content: "Reezy, Eladio Carrion, Morad, Yung Beef...",
+    isTitleLink: true,
   },
   {
     title: "Connect",
@@ -53,6 +55,7 @@ export default function Home() {
                 descClass={d.descClass}
                 titleClass={d.titleClass}
                 delay={delay}
+                isTitleLink={d.isTitleLink}
               />
             );
           })}
@@ -68,14 +71,15 @@ function Card({
   descClass,
   titleClass,
   delay,
+  isTitleLink,
 }: {
   title: string;
   content: string | React.JSX.Element;
   descClass?: string;
   titleClass?: string;
   delay: number;
+  isTitleLink?: boolean;
 }) {
-  console.log(titleClass);
   return (
     <>
       <div
@@ -86,7 +90,11 @@ function Card({
           className={`animate-fadeIn opacity-0 ${titleClass ?? ""}`}
           style={{ animationDelay: `${delay}s` }}
         >
-          {title}
+          {isTitleLink ? (
+            <Link href="/discography">{title}</Link>
+          ) : (
+            <div>{title}</div>
+          )}
         </h1>
       </div>
       <div
