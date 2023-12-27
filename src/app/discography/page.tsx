@@ -29,7 +29,7 @@ export default function Discography() {
           >
             <CarouselContent>
               {images.map((image, index) => (
-                <CarouselItem key={index} className="basis-96">
+                <CarouselItem key={index} className="md:basis-96 lg:basis-96 basis-56">
                   <Image src={image} alt="testing" unoptimized />
                 </CarouselItem>
               ))}
