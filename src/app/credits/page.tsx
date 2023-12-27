@@ -1,6 +1,5 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import images from "./images";
@@ -12,24 +11,11 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Link from "next/link";
-import { host } from "@/lib/utils";
+import { useSpotifyToken } from "@/hooks";
 
 export default function Credits() {
-  const [token, setToken] = useState<string | null>(null);
   const state = useSearchParams().get("state");
-
-  useEffect(() => {
-    (async () => {
-      try {
-        window.history.replaceState(null, "", "/credits");
-        const res = await fetch(`${host()}/api/spotify/token?state=${state}`);
-        const { access_token } = await res.json();
-        setToken(access_token);
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, [state]);
+  const [token, isLoading] = useSpotifyToken(state);
 
   return (
     <div className="flex flex-grow items-center justify-center bg-neutral-900">
