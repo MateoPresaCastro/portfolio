@@ -33,5 +33,5 @@ export async function GET(request: NextRequest) {
 
   cache.set(state, access_token);
 
-  return Response.redirect(`${host()}/credits&state=${state}`);
+  return Response.redirect(`${host()}/credits?state=${state}`);
 }

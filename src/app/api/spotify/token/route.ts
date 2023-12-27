@@ -4,6 +4,7 @@ import { NextRequest } from "next/server";
 export async function GET(request: NextRequest) {
   const state = request.nextUrl.searchParams.get("state");
   if (!state) {
+    console.log("No state");
     return Response.error();
   }
 

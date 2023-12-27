@@ -1,7 +1,6 @@
 import { host } from "@/lib/utils";
 
 export async function GET(request: Request) {
-  console.log(request);
   const client_id = process.env.SPOTIFY_CLIENT_ID;
   if (!client_id) {
     return Response.error();
