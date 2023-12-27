@@ -11,8 +11,7 @@ const data = [
     title: "Mateo Presa Castro",
     content: (
       <div>
-        <span className={`${newsreader.className} text-[19px]`}>Music</span>,
-        and
+        <span className={`${newsreader.className} text-[19px]`}>Music</span> and
         <span className={`${newsreader.className} text-[19px]`}>
           {" "}
           software.
