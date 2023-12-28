@@ -1,7 +1,7 @@
 import { host } from "@/lib/utils";
 export const dynamic = "force-dynamic";
 
-export async function GET(request: Request) {
+export async function GET() {
   const client_id = process.env.SPOTIFY_CLIENT_ID;
   if (!client_id) {
     return Response.json(
