@@ -5,7 +5,6 @@ import Footer from "@/components/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from '@vercel/analytics/react';
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -23,8 +22,8 @@ export default function RootLayout({
         className={inter.className + " flex min-h-screen flex-col antialiased"}
       >
         {children}
-        <SpeedInsights />
         <Analytics />
+        <SpeedInsights />
         <Footer />
       </body>
     </html>

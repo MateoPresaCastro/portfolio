@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
     { access_token },
     {
       headers: {
-        "Access-Control-Allow-Origin": "https://mateopresacastro.me",
+        "Access-Control-Allow-Origin": "https://www.mateopresacastro.me",
       },
     },
   );
