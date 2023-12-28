@@ -44,7 +44,7 @@ export default function Credits() {
                       height={500}
                       alt="Song cover art"
                       priority
-                      unoptimized
+                      // unoptimized
                     />
                     <div className="flex justify-start">
                       <div className="mt-2">
