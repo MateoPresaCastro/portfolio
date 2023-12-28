@@ -10,5 +10,3 @@ export function host() {
     ? "http://localhost:3000"
     : "https://www.mateopresacastro.me";
 }
-
-export const cache = new Map<string, string>();

@@ -1,11 +1,10 @@
-import { cache, host } from "@/lib/utils";
+import { host } from "@/lib/utils";
 import { NextRequest } from "next/server";
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const code = searchParams.get("code");
-  const state = searchParams.get("state");
   const clientId = process.env.SPOTIFY_CLIENT_ID;
   const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
 
@@ -16,7 +15,7 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  if (!code || !state) {
+  if (!code) {
     return Response.json({ error: "Missing query params" }, { status: 400 });
   }
 
@@ -36,9 +35,8 @@ export async function GET(request: NextRequest) {
 
   const { access_token } = await res.json();
   if (!access_token) {
-    return Response.error();
+    return Response.json({ error: "Could not fetch token" }, { status: 500 });
   }
 
-  cache.set(state, access_token);
-  return Response.redirect(`${host()}/credits?state=${state}`);
+  return Response.redirect(`${host()}/credits?accessToken=${access_token}`);
 }

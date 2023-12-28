@@ -4,7 +4,6 @@ import Link from "next/link";
 import songData from "./song-data";
 import SpotifyWebPlayer from "@/components/SpotifyWebPlayer";
 import LoginButton from "@/components/LoginButton";
-import { useSpotifyToken } from "@/hooks";
 import { useSearchParams } from "next/navigation";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import {
@@ -18,8 +17,12 @@ import { type CarouselApi } from "@/components/ui/carousel";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 export default function Credits() {
-  const state = useSearchParams().get("state");
-  const { token } = useSpotifyToken(state);
+  const token = useSearchParams().get("accessToken");
+  if (token) {
+    localStorage.setItem("accessToken", token);
+  }
+
+  const storedToken = localStorage.getItem("accessToken");
   const [currentTrackId, setCurrentTrackId] = useState<string>(
     songData[0].id ?? "",
   );
@@ -36,10 +39,13 @@ export default function Credits() {
           </Link>
           <MyCarousel setCurrentTrackId={setCurrentTrackId} />
           <div className="flex h-32 items-center justify-center">
-            {!token ? (
+            {!storedToken ? (
               <LoginButton />
             ) : (
-              <SpotifyWebPlayer token={token} currentTrackId={currentTrackId} />
+              <SpotifyWebPlayer
+                token={storedToken}
+                currentTrackId={currentTrackId}
+              />
             )}
           </div>
         </div>
@@ -91,7 +97,7 @@ function MyCarousel({
                 height={500}
                 alt="Song cover art"
                 priority={imagePriority(index)}
-                // unoptimized
+                unoptimized
               />
               <div className="flex justify-start">
                 <div className="mt-2">

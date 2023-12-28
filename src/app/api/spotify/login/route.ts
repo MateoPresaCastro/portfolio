@@ -9,7 +9,10 @@ export async function GET() {
       { status: 500 },
     );
   }
-  const scope = "streaming user-read-email user-read-private";
+  
+  const scope =
+    "streaming user-read-email user-read-private user-modify-playback-state user-read-playback-state";
+
   const state = generateRandomString(16);
   const authQueryParameters = new URLSearchParams({
     state,
@@ -20,7 +23,7 @@ export async function GET() {
   });
 
   return Response.redirect(
-    "https://accounts.spotify.com/authorize/?" + authQueryParameters.toString(),
+    `https://accounts.spotify.com/authorize/?${authQueryParameters.toString()}`,
   );
 }
 
