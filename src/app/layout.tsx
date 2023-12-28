@@ -27,7 +27,6 @@ export default function RootLayout({
         <SpeedInsights />
         <Footer />
       </body>
-      <Script src="https://sdk.scdn.co/spotify-player.js" />
     </html>
   );
 }

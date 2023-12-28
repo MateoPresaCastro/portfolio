@@ -9,13 +9,14 @@ export function useSpotifyToken(state: string | null) {
     (async () => {
       try {
         setLoading(true);
-        if (!state) {
-          setLoading(false);
-          return;
-        }
         const item = localStorage.getItem("spotify_token");
         if (item) {
           setToken(item);
+          setLoading(false);
+          return;
+        }
+
+        if (!state) {
           setLoading(false);
           return;
         }
@@ -36,7 +37,7 @@ export function useSpotifyToken(state: string | null) {
     })();
   }, [state]);
 
-  return {token, isLoading};
+  return { token, isLoading };
 }
 
 export default useSpotifyToken;

@@ -7,15 +7,18 @@ import {
 } from "react";
 import { Button } from "./ui/button";
 import { playTrack } from "@/lib/spotify-api-service";
+import Script from "next/script";
 
 export default function SpotifyWebPlayer({ token }: { token: string }) {
   const [deviceId, setDeviceId] = useState<string | null>(null);
   const [player, setPlayer] = useState<Spotify.Player | null>(null);
   const [isActive, setIsActive] = useState<boolean>(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [playBackState, setPlayBackState] =
     useState<Spotify.PlaybackState | null>(null);
 
   useEffect(() => {
+    console.log("USE EFFECT");
     window.onSpotifyWebPlaybackSDKReady = async () => {
       const player = new window.Spotify.Player({
         name: "Mateo Credits Player",
@@ -27,26 +30,12 @@ export default function SpotifyWebPlayer({ token }: { token: string }) {
 
       setPlayer(player);
       player.addListener("ready", ({ device_id }) => {
-        console.debug("Ready with Device ID", device_id);
         setDeviceId(device_id);
-      });
-
-      player.addListener("player_state_changed", (state) => {
-        if (!state) {
-          return;
-        }
-
-        player.getCurrentState().then((state) => {
-          if (!state) {
-            setIsActive(false);
-          } else {
-            setIsActive(true);
-          }
-        });
       });
 
       await player.connect();
       console.log("Spotify Web Player Connected");
+      setIsActive(true);
     };
   }, [token]);
 
@@ -55,19 +44,29 @@ export default function SpotifyWebPlayer({ token }: { token: string }) {
       return;
     }
 
-    await playTrack(token, "0ea9jt0vWPgR5Jm2P4q70z?si=dd558e48d57e4c8f", deviceId);
+    await playTrack(
+      token,
+      "0ea9jt0vWPgR5Jm2P4q70z?si=dd558e48d57e4c8f",
+      deviceId,
+    );
+
+    setIsPlaying(true);
   };
 
-  useEffect(() => {
-    (async () => {
-      const playBackState = await player?.getCurrentState();
-      console.log({ playBackState });
-      if (playBackState) {
-        console.log({ playBackState });
-        setPlayBackState(playBackState);
-      }
-    })();
-  }, [player]);
+  const handlePause = async () => {
+    if (!deviceId) {
+      return;
+    }
+    await player?.pause();
+    setIsPlaying(false);
+  };
+
+  const checkState = async () => {
+    const playBackState = await player?.getCurrentState();
+    if (playBackState) {
+      setIsActive(true);
+    }
+  };
 
   return (
     <h1>
@@ -76,16 +75,17 @@ export default function SpotifyWebPlayer({ token }: { token: string }) {
           className="bg-neutral-600 hover:bg-neutral-500"
           onClick={handlePlay}
         >
-          Play
+          {isPlaying ? "Pause" : "Play"}
         </Button>
       ) : (
         <Button
           className="bg-neutral-600 hover:bg-neutral-500"
-          onClick={handlePlay}
+          onClick={checkState}
         >
           Activate Player on Spotify
         </Button>
       )}
+      <Script src="https://sdk.scdn.co/spotify-player.js" />
     </h1>
   );
 }
