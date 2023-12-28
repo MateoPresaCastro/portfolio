@@ -37,17 +37,11 @@ export default function Credits() {
               Back
             </p>
           </Link>
-          <MyCarousel setCurrentTrackId={setCurrentTrackId} />
-          <div className="flex h-32 items-center justify-center">
-            {!storedToken ? (
-              <LoginButton />
-            ) : (
-              <SpotifyWebPlayer
-                token={storedToken}
-                currentTrackId={currentTrackId}
-              />
-            )}
-          </div>
+          <MyCarousel
+            setCurrentTrackId={setCurrentTrackId}
+            token={storedToken}
+            currentTrackId={currentTrackId}
+          />
         </div>
       </div>
     </div>
@@ -56,8 +50,12 @@ export default function Credits() {
 
 function MyCarousel({
   setCurrentTrackId,
+  token,
+  currentTrackId,
 }: {
   setCurrentTrackId: Dispatch<SetStateAction<string>>;
+  token: string | null;
+  currentTrackId: string;
 }) {
   const [api, setApi] = useState<CarouselApi>();
 
@@ -72,12 +70,6 @@ function MyCarousel({
     });
   }, [api, setCurrentTrackId]);
 
-  const imagePriority = (index: number) => {
-    return index === songData.length - 1 || index === 0 || index === 1
-      ? true
-      : false;
-  };
-
   return (
     <Carousel
       opts={{
@@ -90,21 +82,32 @@ function MyCarousel({
       <CarouselContent>
         {songData.map(({ image, album, artist, song, year }, index) => (
           <CarouselItem key={index} className="basis-72 md:basis-96">
-            <div>
+            <div className="relative">
               <Image
                 src={image}
                 width={500}
                 height={500}
                 alt="Song cover art"
-                priority={imagePriority(index)}
+                priority
                 unoptimized
               />
-              <div className="flex justify-start">
-                <div className="mt-2">
-                  <p className="text-neutral-300">{`${artist} - ${song}`}</p>
-                  <p className="className= text-neutral-500">{album}</p>
-                  <p className="className= text-xs text-neutral-500">{year}</p>
-                </div>
+
+              <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center bg-black bg-opacity-50 opacity-0 transition-opacity duration-500 ease-in-out hover:opacity-100">
+                {!token ? (
+                  <LoginButton />
+                ) : (
+                  <SpotifyWebPlayer
+                    token={token}
+                    currentTrackId={currentTrackId}
+                  />
+                )}
+              </div>
+            </div>
+            <div className="flex justify-start">
+              <div className="mt-2">
+                <p className="text-neutral-300">{`${artist} - ${song}`}</p>
+                <p className="className= text-neutral-500">{album}</p>
+                <p className="className= text-xs text-neutral-500">{year}</p>
               </div>
             </div>
           </CarouselItem>

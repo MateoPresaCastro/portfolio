@@ -10,14 +10,13 @@ export default function SpotifyWebPlayer({
   token: string;
   currentTrackId: string;
 }) {
-  const [isActive, setIsActive] = useState<boolean>(false);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [trackPlayingId, setTrackPlayingId] = useState<string | null>(null);
 
   const handlePlay = async () => {
     await play(token, currentTrackId);
     setIsPlaying(true);
-    setTrackPlayingId(currentTrackId);
+    setTrackPlayingId(currentTrackId);``
   };
 
   const handlePause = async () => {
