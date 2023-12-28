@@ -1,10 +1,13 @@
 import { host } from "@/lib/utils";
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
   const client_id = process.env.SPOTIFY_CLIENT_ID;
   if (!client_id) {
-    return Response.error();
+    return Response.json(
+      { error: "No spotify client id on .env" },
+      { status: 500 },
+    );
   }
 
   const state = generateRandomString(16);
