@@ -91,7 +91,7 @@ function MyCarousel({
                 height={500}
                 alt="Song cover art"
                 priority={imagePriority(index)}
-                unoptimized
+                // unoptimized
               />
               <div className="flex justify-start">
                 <div className="mt-2">
