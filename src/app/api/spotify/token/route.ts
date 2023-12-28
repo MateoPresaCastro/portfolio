@@ -3,7 +3,7 @@ import { NextRequest } from "next/server";
 export const dynamic = "force-dynamic";
 
 const headers = {
-  "Access-Control-Allow-Origin": "https://www.mateopresacastro.me";
+  "Access-Control-Allow-Origin": "https://www.mateopresacastro.me",
 };
 
 export async function GET(request: NextRequest) {
