@@ -17,6 +17,12 @@ export default function Credits() {
   const state = useSearchParams().get("state");
   const [token, isLoading] = useSpotifyToken(state);
 
+  const imagePriority = (index: number) => {
+    return index === images.length - 1 || index === 0 || index === 1
+      ? true
+      : false;
+  };
+
   return (
     <div className="flex flex-grow items-center justify-center bg-neutral-900">
       <div className="m-10">
@@ -43,8 +49,8 @@ export default function Credits() {
                       width={500}
                       height={500}
                       alt="Song cover art"
-                      priority
-                      // unoptimized
+                      priority={imagePriority(index)}
+                      unoptimized
                     />
                     <div className="flex justify-start">
                       <div className="mt-2">
