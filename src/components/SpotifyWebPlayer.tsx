@@ -1,24 +1,23 @@
-import {
-  useEffect,
-  useState,
-  type Dispatch,
-  type SetStateAction,
-  use,
-} from "react";
+import Script from "next/script";
+import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { playTrack } from "@/lib/spotify-api-service";
-import Script from "next/script";
+import { PlayIcon, PauseIcon } from "@radix-ui/react-icons";
 
-export default function SpotifyWebPlayer({ token }: { token: string }) {
+export default function SpotifyWebPlayer({
+  token,
+  currentTrackId,
+}: {
+  token: string;
+  currentTrackId: string;
+}) {
   const [deviceId, setDeviceId] = useState<string | null>(null);
   const [player, setPlayer] = useState<Spotify.Player | null>(null);
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [playBackState, setPlayBackState] =
-    useState<Spotify.PlaybackState | null>(null);
+  const [trackPlayingId, setTrackPlayingId] = useState<string | null>(null);
 
   useEffect(() => {
-    console.log("USE EFFECT");
     window.onSpotifyWebPlaybackSDKReady = async () => {
       const player = new window.Spotify.Player({
         name: "Mateo Credits Player",
@@ -44,13 +43,9 @@ export default function SpotifyWebPlayer({ token }: { token: string }) {
       return;
     }
 
-    await playTrack(
-      token,
-      "0ea9jt0vWPgR5Jm2P4q70z?si=dd558e48d57e4c8f",
-      deviceId,
-    );
-
+    await playTrack(token, currentTrackId, deviceId);
     setIsPlaying(true);
+    setTrackPlayingId(currentTrackId);
   };
 
   const handlePause = async () => {
@@ -61,30 +56,24 @@ export default function SpotifyWebPlayer({ token }: { token: string }) {
     setIsPlaying(false);
   };
 
-  const checkState = async () => {
-    const playBackState = await player?.getCurrentState();
-    if (playBackState) {
-      setIsActive(true);
-    }
-  };
+  if (isPlaying && (currentTrackId !== trackPlayingId)) {
+    (async () => await handlePlay())();
+  }
 
   return (
     <h1>
-      {isActive ? (
+      {(isActive && (
         <Button
-          className="bg-neutral-600 hover:bg-neutral-500"
-          onClick={handlePlay}
+          className="bg-neutral-700 transition-all duration-300 hover:bg-neutral-500 hover:text-neutral-800"
+          onClick={isPlaying ? handlePause : handlePlay}
         >
-          {isPlaying ? "Pause" : "Play"}
+          {isPlaying ? (
+            <PauseIcon className="text-5xl" />
+          ) : (
+            <PlayIcon className="text-5xl" />
+          )}
         </Button>
-      ) : (
-        <Button
-          className="bg-neutral-600 hover:bg-neutral-500"
-          onClick={checkState}
-        >
-          Activate Player on Spotify
-        </Button>
-      )}
+      )) || <Button disabled>Connecting...</Button>}
       <Script src="https://sdk.scdn.co/spotify-player.js" />
     </h1>
   );

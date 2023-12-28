@@ -14,10 +14,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { type CarouselApi } from "@/components/ui/carousel";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 export default function Credits() {
   const state = useSearchParams().get("state");
   const { token } = useSpotifyToken(state);
+  const [currentTrackId, setCurrentTrackId] = useState<string>(
+    songData[0].id ?? "",
+  );
+
   return (
     <div className="flex flex-grow items-center justify-center bg-neutral-900">
       <div className="m-10">
@@ -28,9 +34,13 @@ export default function Credits() {
               Back
             </p>
           </Link>
-          <MyCarousel />
+          <MyCarousel setCurrentTrackId={setCurrentTrackId} />
           <div className="flex h-32 items-center justify-center">
-            {!token ? <LoginButton /> : <SpotifyWebPlayer token={token} />}
+            {!token ? (
+              <LoginButton />
+            ) : (
+              <SpotifyWebPlayer token={token} currentTrackId={currentTrackId} />
+            )}
           </div>
         </div>
       </div>
@@ -38,7 +48,24 @@ export default function Credits() {
   );
 }
 
-function MyCarousel() {
+function MyCarousel({
+  setCurrentTrackId,
+}: {
+  setCurrentTrackId: Dispatch<SetStateAction<string>>;
+}) {
+  const [api, setApi] = useState<CarouselApi>();
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    api.on("select", () => {
+      console.log("selected", api.selectedScrollSnap());
+      setCurrentTrackId(songData[api.selectedScrollSnap()].id ?? "");
+    });
+  }, [api, setCurrentTrackId]);
+
   const imagePriority = (index: number) => {
     return index === songData.length - 1 || index === 0 || index === 1
       ? true
@@ -52,6 +79,7 @@ function MyCarousel() {
         loop: true,
       }}
       className="w-72 max-w-sm md:w-full lg:md:w-full"
+      setApi={setApi}
     >
       <CarouselContent>
         {songData.map(({ image, album, artist, song, year }, index) => (

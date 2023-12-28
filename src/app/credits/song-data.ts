@@ -20,6 +20,7 @@ interface ImageData {
   album?: string;
   artist: string;
   year?: string;
+  id?: string;
 }
 
 const songData: ImageData[] = [
@@ -29,12 +30,14 @@ const songData: ImageData[] = [
     artist: "Eladio Carrion",
     song: "HP Freestyle",
     year: "2022",
+    id: "0ea9jt0vWPgR5Jm2P4q70z",
   },
   {
-    image: arena,
+    image: waves,
     artist: "Smart K",
     song: "Waves",
     year: "2022",
+    id: "5yLuU6OgfcvWM8cYTgDq07",
   },
   { image: el2, artist: "Eladio Carrion", song: "Red Bull", year: "2021" },
   {
