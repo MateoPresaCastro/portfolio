@@ -1,6 +1,7 @@
 import { cache, host } from "@/lib/utils";
 import { NextRequest } from "next/server";
 export const dynamic = "force-dynamic";
+
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const code = searchParams.get("code");
@@ -20,7 +21,6 @@ export async function GET(request: NextRequest) {
   }
 
   const auth = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
-
   const res = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
     headers: {
@@ -40,6 +40,5 @@ export async function GET(request: NextRequest) {
   }
 
   cache.set(state, access_token);
-
   return Response.redirect(`${host()}/credits?state=${state}`);
 }
