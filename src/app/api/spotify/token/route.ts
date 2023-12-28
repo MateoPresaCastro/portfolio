@@ -2,7 +2,7 @@ import { cache } from "@/lib/utils";
 import { NextRequest } from "next/server";
 export const dynamic = "force-dynamic";
 
-const headers: {
+const headers = {
   "Access-Control-Allow-Origin": "https://www.mateopresacastro.me";
 };
 
