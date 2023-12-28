@@ -13,7 +13,7 @@ export default function SpotifyWebPlayer({ token }: { token: string }) {
     window.onSpotifyWebPlaybackSDKReady = () => {
       const player = new window.Spotify.Player({
         name: "Web Playback SDK",
-        getOAuthToken: (cb: (token: string) => void) => {
+        getOAuthToken: (cb) => {
           cb(token);
         },
         volume: 0.5,
@@ -21,16 +21,13 @@ export default function SpotifyWebPlayer({ token }: { token: string }) {
 
       setPlayer(player);
 
-      player.addListener("ready", ({ device_id }: { device_id: string }) => {
+      player.addListener("ready", ({ device_id }) => {
         console.log("Ready with Device ID", device_id);
       });
 
-      player.addListener(
-        "not_ready",
-        ({ device_id }: { device_id: string }) => {
-          console.log("Device ID has gone offline", device_id);
-        },
-      );
+      player.addListener("not_ready", ({ device_id }) => {
+        console.log("Device ID has gone offline", device_id);
+      });
 
       player.connect();
     };

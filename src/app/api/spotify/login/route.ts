@@ -9,11 +9,12 @@ export async function GET() {
       { status: 500 },
     );
   }
-
+  const scope = "streaming user-read-email user-read-private";
   const state = generateRandomString(16);
   const authQueryParameters = new URLSearchParams({
     state,
     client_id,
+    scope,
     response_type: "code",
     redirect_uri: `${host()}/api/spotify/callback`,
   });
