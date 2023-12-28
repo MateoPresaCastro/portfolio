@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 export function host() {
   return process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
-    : "https://mateopresacastro.me";
+    : "https://www.mateopresacastro.me";
 }
 
 export const cache = new Map<string, string>();
