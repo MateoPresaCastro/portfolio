@@ -16,11 +16,12 @@ export default function SpotifyWebPlayer({
   const handlePlay = async () => {
     await play(token, currentTrackId);
     setIsPlaying(true);
-    setTrackPlayingId(currentTrackId);``
+    setTrackPlayingId(currentTrackId);
   };
 
   const handlePause = async () => {
     await pause(token, currentTrackId);
+    console.log("pause");
     setIsPlaying(false);
   };
 
@@ -31,7 +32,7 @@ export default function SpotifyWebPlayer({
   return (
     <h1>
       <Button
-        className="bg-neutral-700 transition-all duration-300 hover:bg-neutral-500 hover:text-neutral-800"
+        className="bg-transparent h-11 w-11"
         onClick={isPlaying ? handlePause : handlePlay}
       >
         {isPlaying ? (

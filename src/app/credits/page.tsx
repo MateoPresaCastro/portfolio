@@ -30,18 +30,26 @@ export default function Credits() {
   return (
     <div className="flex flex-grow items-center justify-center bg-neutral-900">
       <div className="m-10">
-        <div className="max-w-2xl text-neutral-300">
+        <div className="ml-1.5 max-w-2xl text-neutral-300">
           <Link href="/" className="mb-2 flex w-16 items-center">
             <ArrowLeftIcon />
             <p className="ml-1 w-auto cursor-pointer underline decoration-neutral-600 decoration-1 underline-offset-[2.5px] transition-all duration-300 hover:decoration-neutral-400">
               Back
             </p>
           </Link>
-          <MyCarousel
-            setCurrentTrackId={setCurrentTrackId}
-            token={storedToken}
-            currentTrackId={currentTrackId}
-          />
+          <div className="relative flex items-center justify-center">
+            <MyCarousel setCurrentTrackId={setCurrentTrackId} />
+            <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center opacity-0 transition-opacity duration-500 ease-in-out hover:opacity-100">
+              {!storedToken ? (
+                <LoginButton />
+              ) : (
+                <SpotifyWebPlayer
+                  token={storedToken}
+                  currentTrackId={currentTrackId}
+                />
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -50,12 +58,8 @@ export default function Credits() {
 
 function MyCarousel({
   setCurrentTrackId,
-  token,
-  currentTrackId,
 }: {
   setCurrentTrackId: Dispatch<SetStateAction<string>>;
-  token: string | null;
-  currentTrackId: string;
 }) {
   const [api, setApi] = useState<CarouselApi>();
 
@@ -65,7 +69,6 @@ function MyCarousel({
     }
 
     api.on("select", () => {
-      console.log("selected", api.selectedScrollSnap());
       setCurrentTrackId(songData[api.selectedScrollSnap()].id ?? "");
     });
   }, [api, setCurrentTrackId]);
@@ -85,26 +88,16 @@ function MyCarousel({
             <div className="relative">
               <Image
                 src={image}
-                width={500}
-                height={500}
+                width={550}
+                height={550}
                 alt="Song cover art"
                 priority
                 unoptimized
+                className="ml-1.5"
               />
-
-              <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center bg-black bg-opacity-50 opacity-0 transition-opacity duration-500 ease-in-out hover:opacity-100">
-                {!token ? (
-                  <LoginButton />
-                ) : (
-                  <SpotifyWebPlayer
-                    token={token}
-                    currentTrackId={currentTrackId}
-                  />
-                )}
-              </div>
             </div>
             <div className="flex justify-start">
-              <div className="mt-2">
+              <div className="ml-1.5 mt-2">
                 <p className="text-neutral-300">{`${artist} - ${song}`}</p>
                 <p className="className= text-neutral-500">{album}</p>
                 <p className="className= text-xs text-neutral-500">{year}</p>
