@@ -14,5 +14,12 @@ export async function GET(request: NextRequest) {
     return Response.json({ error: "No access token" }, { status: 500 });
   }
 
-  return Response.json({ access_token });
+  return Response.json(
+    { access_token },
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "https://mateopresacastro.me",
+      },
+    },
+  );
 }
