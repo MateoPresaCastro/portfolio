@@ -1,8 +1,12 @@
 "use client";
-import { useSearchParams } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
+import songData from "./song-data";
+import SpotifyWebPlayer from "@/components/SpotifyWebPlayer";
+import LoginButton from "@/components/LoginButton";
+import { useSpotifyToken } from "@/hooks";
+import { useSearchParams } from "next/navigation";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
-import images from "./images";
 import {
   Carousel,
   CarouselContent,
@@ -10,10 +14,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Link from "next/link";
-import { useSpotifyToken } from "@/hooks";
-import LoginButton from "@/components/LoginButton";
-import SpotifyWebPlayer from "@/components/SpotifyWebPlayer";
 
 export default function Credits() {
   const state = useSearchParams().get("state");
@@ -40,7 +40,7 @@ export default function Credits() {
 
 function MyCarousel() {
   const imagePriority = (index: number) => {
-    return index === images.length - 1 || index === 0 || index === 1
+    return index === songData.length - 1 || index === 0 || index === 1
       ? true
       : false;
   };
@@ -54,7 +54,7 @@ function MyCarousel() {
       className="w-72 max-w-sm md:w-full lg:md:w-full"
     >
       <CarouselContent>
-        {images.map(({ image, album, artist, song, year }, index) => (
+        {songData.map(({ image, album, artist, song, year }, index) => (
           <CarouselItem key={index} className="basis-72 md:basis-96">
             <div>
               <Image

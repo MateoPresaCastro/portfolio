@@ -22,7 +22,7 @@ interface ImageData {
   year?: string;
 }
 
-const images: ImageData[] = [
+const songData: ImageData[] = [
   {
     image: el1,
     album: "SEN2 KBRN, VOL. 2",
@@ -111,4 +111,4 @@ const images: ImageData[] = [
   },
 ];
 
-export default images;
+export default songData;
