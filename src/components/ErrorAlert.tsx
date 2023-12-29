@@ -1,6 +1,16 @@
 import { ErrorResponse } from "@/app/credits/page";
-import { Alert, AlertTitle, AlertDescription } from "./ui/alert";
-import { RocketIcon } from "@radix-ui/react-icons";
+import { BiSolidMessageAltError } from "react-icons/bi";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
 import type { Dispatch, SetStateAction } from "react";
 
 export default function ErrorAlert({
@@ -12,20 +22,38 @@ export default function ErrorAlert({
 }) {
   const message = getMessage(error);
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <Alert className="max-w-sm" onClick={() => setError(null)}>
-        <RocketIcon className="h-4 w-4" />
-        <AlertTitle>Heads up!</AlertTitle>
-        <AlertDescription>{message}</AlertDescription>
-      </Alert>
+    <div className="cursor-pointe mt-10 h-11 w-11 text-3xl text-yellow-100 transition-colors duration-300 ease-in-out hover:text-yellow-400">
+      <AlertDialog>
+        <AlertDialogTrigger>
+          <BiSolidMessageAltError />
+        </AlertDialogTrigger>
+        <AlertDialogContent className="border-none bg-neutral-900">
+          <AlertDialogHeader>
+            <AlertDialogTitle className="text-base text-neutral-300">
+              Something went wrong
+            </AlertDialogTitle>
+            <AlertDialogDescription className="text-neutral-400">
+              Make sure to have Spotify open on your device and try again.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction
+              className="cursor-pointer underline decoration-neutral-600 decoration-1 underline-offset-[2.5px] shadow-none transition-all duration-300 hover:decoration-neutral-400"
+              onClick={() => setTimeout(() => setError(null), 90)}
+            >
+              Continue
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
 
 function getMessage({ reason }: ErrorResponse) {
   if (reason === "NO_ACTIVE_DEVICE") {
-    return "You have to play a song on your Spotify device in order to activate it.";
+    return "Please open Spotify on your device and try again.";
   }
 
-  return "Something went wrong. Please try again.";
+  return "Please try again.";
 }

@@ -40,8 +40,10 @@ export default function Credits() {
           <BackButton />
           <div className="relative flex flex-col items-center justify-center">
             <MyCarousel setCurrentTrackId={setCurrentTrackId} />
-            <div className="flex h-full w-full items-center justify-center">
-              {!storedToken ? (
+            <div className="flex h-10 w-72 md:w-80 md:h-8 items-center justify-center">
+              {error ? (
+                <ErrorAlert error={error} setError={setError} />
+              ) : !storedToken ? (
                 <LoginButton />
               ) : (
                 <PlayPauseButton
@@ -54,11 +56,6 @@ export default function Credits() {
           </div>
         </div>
       </div>
-      {error &&
-        createPortal(
-          <ErrorAlert error={error} setError={setError} />,
-          document.body,
-        )}
     </div>
   );
 }
