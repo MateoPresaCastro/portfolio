@@ -1,13 +1,15 @@
+import { ErrorResponse } from "@/app/credits/page";
 import { remove, retrieve, store } from "./storage";
 
-const spotifyApiPlayerUrl = "https://api.spotify.com/v1/me/player";
+const SPOTIFY_PLAYER_URL = "https://api.spotify.com/v1/me/player";
+const SPOTIFY_ACCOUNT_URL = "https://accounts.spotify.com/api/token";
 
 export const play = spotify("play");
 export const pause = spotify("pause");
 
 function spotify(method: "play" | "pause") {
   return async (token: string, trackId: string) => {
-    const res = await fetch(`${spotifyApiPlayerUrl}/${method}`, {
+    const res = await fetch(`${SPOTIFY_PLAYER_URL}/${method}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -19,15 +21,20 @@ function spotify(method: "play" | "pause") {
 
     if (!res.ok) {
       const { error } = await res.json();
-      if (error.message === "The access token expired") {
-        await refreshToken();
-      } else if (error.message === "Invalid access token") {
-        remove("refreshToken");
-        remove("accessToken");
-      }
+      await handleError(error);
       return error;
     }
   };
+}
+
+async function handleError({ message }: ErrorResponse) {
+  if (message === "The access token expired") {
+    return await refreshToken();
+  }
+
+  if (message === "Invalid access token") {
+    return removeTokens();
+  }
 }
 
 async function refreshToken() {
@@ -41,9 +48,7 @@ async function refreshToken() {
     return;
   }
 
-  const url = "https://accounts.spotify.com/api/token";
-
-  const payload = {
+  const res = await fetch(SPOTIFY_ACCOUNT_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -53,19 +58,22 @@ async function refreshToken() {
       refresh_token: oldRefreshToken,
       client_id: clientId,
     }),
-  };
+  });
 
-  const res = await fetch(url, payload);
   if (!res.ok) {
-    console.error("Error refreshing token", res);
-    remove("refreshToken");
-    remove("accessToken");
+    console.error("Error refreshing token");
+    removeTokens();
     return;
   }
 
   const { refreshToken, accessToken } = await res.json();
-  if (refreshToken || accessToken) {
+  if (refreshToken && accessToken) {
     store("refreshToken", refreshToken);
     store("accessToken", accessToken);
   }
+}
+
+function removeTokens() {
+  remove("refreshToken");
+  remove("accessToken");
 }
