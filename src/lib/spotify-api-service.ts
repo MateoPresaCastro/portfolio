@@ -55,6 +55,13 @@ async function refreshToken() {
   };
 
   const res = await fetch(url, payload);
+  if (!res.ok) {
+    console.error("Error refreshing token", res);
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("accessToken");
+    return;
+  }
+
   const { refreshToken, accessToken } = await res.json();
   if (refreshToken || accessToken) {
     localStorage.setItem("refreshToken", refreshToken);
