@@ -12,7 +12,7 @@ import ErrorAlert from "@/components/ErrorAlert";
 export interface ErrorResponse {
   status: number;
   message: string;
-  reason: string;
+  reason?: string;
 }
 
 export default function Credits() {
@@ -38,9 +38,9 @@ export default function Credits() {
       <div className="m-10">
         <div className="ml-2 max-w-2xl text-neutral-300">
           <BackButton />
-          <div className="relative flex items-center justify-center">
+          <div className="relative flex flex-col items-center justify-center">
             <MyCarousel setCurrentTrackId={setCurrentTrackId} />
-            <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center opacity-0 transition-opacity duration-500 ease-in-out hover:opacity-100">
+            <div className="flex h-full w-full items-center justify-center">
               {!storedToken ? (
                 <LoginButton />
               ) : (

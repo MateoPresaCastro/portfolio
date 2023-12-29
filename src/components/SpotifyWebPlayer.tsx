@@ -1,7 +1,6 @@
 import { useState, type Dispatch, type SetStateAction } from "react";
-import { Button } from "./ui/button";
 import { pause, play } from "@/lib/spotify-api-service";
-import { PlayIcon, PauseIcon } from "@radix-ui/react-icons";
+import { IoPlaySharp, IoPauseSharp } from "react-icons/io5";
 import { ErrorResponse } from "@/app/credits/page";
 
 export default function SpotifyWebPlayer({
@@ -44,17 +43,11 @@ export default function SpotifyWebPlayer({
   }
 
   return (
-    <h1>
-      <Button
-        className="h-11 w-11 bg-transparent"
-        onClick={isPlaying ? handlePause : handlePlay}
-      >
-        {isPlaying ? (
-          <PauseIcon className="text-5xl" />
-        ) : (
-          <PlayIcon className="text-5xl" />
-        )}
-      </Button>
-    </h1>
+    <div
+      className="mt-10 h-11 w-11 cursor-pointer text-3xl text-neutral-300 transition-colors duration-300 ease-in-out hover:text-neutral-500"
+      onClick={isPlaying ? handlePause : handlePlay}
+    >
+      {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />}
+    </div>
   );
 }
