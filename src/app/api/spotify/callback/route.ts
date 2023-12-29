@@ -1,5 +1,6 @@
 import { host } from "@/lib/utils";
 import { NextRequest } from "next/server";
+
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
@@ -33,10 +34,12 @@ export async function GET(request: NextRequest) {
     }),
   });
 
-  const { access_token } = await res.json();
+  const { access_token, refresh_token } = await res.json();
   if (!access_token) {
     return Response.json({ error: "Could not fetch token" }, { status: 500 });
   }
 
-  return Response.redirect(`${host()}/credits?accessToken=${access_token}`);
+  return Response.redirect(
+    `${host()}/credits?accessToken=${access_token}&refreshToken=${refresh_token}`,
+  );
 }

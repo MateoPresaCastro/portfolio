@@ -14,7 +14,7 @@ import saniser from "../../../public/saniser.jpg";
 import waves from "../../../public/waves.jpeg";
 import type { StaticImageData } from "next/image";
 
-interface ImageData {
+interface SongData {
   image: StaticImageData;
   song: string;
   album?: string;
@@ -23,7 +23,7 @@ interface ImageData {
   id?: string;
 }
 
-const songData: ImageData[] = [
+const SONG_DATA: SongData[] = [
   {
     image: el1,
     album: "SEN2 KBRN, VOL. 2",
@@ -131,4 +131,4 @@ const songData: ImageData[] = [
   },
 ];
 
-export default songData;
+export default SONG_DATA;
