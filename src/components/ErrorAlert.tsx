@@ -33,7 +33,13 @@ export default function ErrorAlert({
               Something went wrong
             </AlertDialogTitle>
             <AlertDialogDescription className="text-neutral-400">
-              Make sure to have Spotify open on your device and try again.
+              <div>
+                You need a<span className="font-bold"> premium account</span>,
+                the Spotify app
+                <span className="font-bold"> running</span> and
+                <span className="font-bold"> play a song</span> on it to
+                activate your device.
+              </div>
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
