@@ -35,8 +35,8 @@ export default function ErrorAlert({
             <AlertDialogDescription className="text-neutral-400">
               You need a<span className="font-bold"> premium account</span>, the
               Spotify app
-              <span className="font-bold"> running</span> and
-              <span className="font-bold"> play a song</span> on it to activate
+              <span className="font-bold"> running</span> and to
+              <span className="font-bold"> play a song</span> on it, to activate
               your device.
             </AlertDialogDescription>
           </AlertDialogHeader>
