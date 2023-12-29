@@ -1,25 +1,10 @@
 "use client";
-import Link from "next/link";
+import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import SONG_DATA from "./song-data";
 import SpotifyWebPlayer from "@/components/SpotifyWebPlayer";
 import LoginButton from "@/components/LoginButton";
-import { useSearchParams } from "next/navigation";
-import { ArrowLeftIcon } from "@radix-ui/react-icons";
-import { useState } from "react";
 import MyCarousel from "@/components/MyCarousel";
-import {
-  AlertDialogHeader,
-  AlertDialogFooter,
-} from "@/components/ui/alert-dialog";
-import {
-  AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogTitle,
-  AlertDialogDescription,
-  AlertDialogCancel,
-  AlertDialogAction,
-} from "@radix-ui/react-alert-dialog";
 import BackButton from "@/components/BackButton";
 
 export default function Credits() {
