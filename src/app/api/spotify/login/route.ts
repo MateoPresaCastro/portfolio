@@ -1,4 +1,5 @@
-import { host } from "@/lib/utils";
+import { host, generateRandomString } from "@/lib/utils";
+
 export const dynamic = "force-dynamic";
 
 export async function GET() {
@@ -9,7 +10,7 @@ export async function GET() {
       { status: 500 },
     );
   }
-  
+
   const scope =
     "streaming user-read-email user-read-private user-modify-playback-state user-read-playback-state";
 
@@ -25,12 +26,4 @@ export async function GET() {
   return Response.redirect(
     `https://accounts.spotify.com/authorize/?${authQueryParameters.toString()}`,
   );
-}
-
-function generateRandomString(length: number) {
-  const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  return Array.from({ length }, () =>
-    characters.charAt(Math.floor(Math.random() * characters.length)),
-  ).join("");
 }

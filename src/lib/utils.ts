@@ -10,3 +10,11 @@ export function host() {
     ? "http://localhost:3000"
     : "https://www.mateopresacastro.me";
 }
+
+export function generateRandomString(length: number) {
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  return Array.from({ length }, () =>
+    characters.charAt(Math.floor(Math.random() * characters.length)),
+  ).join("");
+}
