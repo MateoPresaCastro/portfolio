@@ -32,7 +32,6 @@ export default function Credits() {
   }
 
   const storedToken = localStorage.getItem("accessToken");
-  console.log(error);
 
   return (
     <div className="flex flex-grow items-center justify-center bg-neutral-900">
