@@ -76,4 +76,11 @@ async function refreshToken() {
 function removeTokens() {
   remove("refreshToken");
   remove("accessToken");
+  removeQueryParameters();
+}
+
+function removeQueryParameters() {
+  const url = window.location.href;
+  const urlWithoutQueryParams = url.split("?")[0];
+  window.history.pushState({}, "", urlWithoutQueryParams);
 }
