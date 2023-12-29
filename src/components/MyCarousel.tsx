@@ -51,7 +51,7 @@ export default function MyCarousel({
               />
             </div>
             <div className="flex justify-start">
-              <div className="ml-1.5 mt-2">
+              <div className="ml-2 mt-2">
                 <p className="text-neutral-300">{`${artist} - ${song}`}</p>
                 <p className="className= text-neutral-500">{album}</p>
                 <p className="className= text-xs text-neutral-500">{year}</p>
