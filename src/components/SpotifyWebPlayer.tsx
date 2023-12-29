@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import { Button } from "./ui/button";
 import { pause, play } from "@/lib/spotify-api-service";
 import { PlayIcon, PauseIcon } from "@radix-ui/react-icons";
@@ -6,22 +6,35 @@ import { PlayIcon, PauseIcon } from "@radix-ui/react-icons";
 export default function SpotifyWebPlayer({
   token,
   currentTrackId,
+  setError,
 }: {
   token: string;
   currentTrackId: string;
+  setError: Dispatch<SetStateAction<string | null>>;
 }) {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [trackPlayingId, setTrackPlayingId] = useState<string | null>(null);
 
   const handlePlay = async () => {
-    await play(token, currentTrackId);
+    const error = await play(token, currentTrackId);
+    if (error) {
+      setError(error);
+      setIsPlaying(false);
+      return;
+    }
+
     setIsPlaying(true);
     setTrackPlayingId(currentTrackId);
   };
 
   const handlePause = async () => {
-    await pause(token, currentTrackId);
-    console.log("pause");
+    const error = await pause(token, currentTrackId);
+    if (error) {
+      setError(error);
+      setIsPlaying(false);
+      return;
+    }
+
     setIsPlaying(false);
   };
 
@@ -32,7 +45,7 @@ export default function SpotifyWebPlayer({
   return (
     <h1>
       <Button
-        className="bg-transparent h-11 w-11"
+        className="h-11 w-11 bg-transparent"
         onClick={isPlaying ? handlePause : handlePlay}
       >
         {isPlaying ? (

@@ -12,6 +12,9 @@ export default function Credits() {
   const [currentTrackId, setCurrentTrackId] = useState<string>(
     SONG_DATA.at(0)!.id!,
   );
+  const [error, setError] = useState<string | null>(null);
+
+  console.error({ error });
 
   const token = useSearchParams().get("accessToken");
   const refreshToken = useSearchParams().get("refreshToken");
@@ -44,6 +47,7 @@ export default function Credits() {
                 <SpotifyWebPlayer
                   token={storedToken}
                   currentTrackId={currentTrackId}
+                  setError={setError}
                 />
               )}
             </div>

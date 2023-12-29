@@ -2,7 +2,7 @@ const spotifyApiPlayerUrl = "https://api.spotify.com/v1/me/player";
 
 function spotify(method: "play" | "pause") {
   return async (token: string, trackId: string) => {
-    await fetch(`${spotifyApiPlayerUrl}/${method}`, {
+    const res = await fetch(`${spotifyApiPlayerUrl}/${method}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -11,6 +11,11 @@ function spotify(method: "play" | "pause") {
         uris: [`spotify:track:${trackId}`],
       }),
     });
+
+    if (!res.ok) {
+      const { error } = await res.json();
+      return error;
+    }
   };
 }
 
