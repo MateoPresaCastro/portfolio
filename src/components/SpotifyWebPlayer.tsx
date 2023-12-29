@@ -2,6 +2,7 @@ import { useState, type Dispatch, type SetStateAction } from "react";
 import { Button } from "./ui/button";
 import { pause, play } from "@/lib/spotify-api-service";
 import { PlayIcon, PauseIcon } from "@radix-ui/react-icons";
+import { ErrorResponse } from "@/app/credits/page";
 
 export default function SpotifyWebPlayer({
   token,
@@ -10,7 +11,7 @@ export default function SpotifyWebPlayer({
 }: {
   token: string;
   currentTrackId: string;
-  setError: Dispatch<SetStateAction<string | null>>;
+  setError: Dispatch<SetStateAction<ErrorResponse | null>>;
 }) {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [trackPlayingId, setTrackPlayingId] = useState<string | null>(null);

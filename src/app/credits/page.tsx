@@ -1,17 +1,26 @@
 "use client";
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { useSearchParams } from "next/navigation";
 import SONG_DATA from "./song-data";
 import SpotifyWebPlayer from "@/components/SpotifyWebPlayer";
 import LoginButton from "@/components/LoginButton";
 import MyCarousel from "@/components/MyCarousel";
 import BackButton from "@/components/BackButton";
+import ErrorAlert from "@/components/ErrorAlert";
+
+export interface ErrorResponse {
+  status: number;
+  message: string;
+  reason: string;
+}
 
 export default function Credits() {
+  const [error, setError] = useState<ErrorResponse | null>(null);
   const [currentTrackId, setCurrentTrackId] = useState<string>(
     SONG_DATA.at(0)!.id!,
   );
-  const [error, setError] = useState<string | null>(null);
+
   const token = useSearchParams().get("accessToken");
   const refreshToken = useSearchParams().get("refreshToken");
   if (token) {
@@ -23,6 +32,7 @@ export default function Credits() {
   }
 
   const storedToken = localStorage.getItem("accessToken");
+  console.log(error);
 
   return (
     <div className="flex flex-grow items-center justify-center bg-neutral-900">
@@ -45,6 +55,11 @@ export default function Credits() {
           </div>
         </div>
       </div>
+      {error &&
+        createPortal(
+          <ErrorAlert error={error} setError={setError} />,
+          document.body,
+        )}
     </div>
   );
 }
