@@ -81,6 +81,6 @@ function removeTokens() {
 
 function removeQueryParameters() {
   const url = window.location.href;
-  const urlWithoutQueryParams = url.split("?")[0];
+  const urlWithoutQueryParams = url.split("?").at(0);
   window.history.pushState({}, "", urlWithoutQueryParams);
 }
