@@ -1,3 +1,5 @@
+import { remove, retrieve, store } from "./storage";
+
 const spotifyApiPlayerUrl = "https://api.spotify.com/v1/me/player";
 
 export const play = spotify("play");
@@ -20,8 +22,8 @@ function spotify(method: "play" | "pause") {
       if (error.message === "The access token expired") {
         await refreshToken();
       } else if (error.message === "Invalid access token") {
-        localStorage.removeItem("refreshToken");
-        localStorage.removeItem("accessToken");
+        remove("refreshToken");
+        remove("accessToken");
       }
       return error;
     }
@@ -29,8 +31,7 @@ function spotify(method: "play" | "pause") {
 }
 
 async function refreshToken() {
-  console.log("refreshing token");
-  const oldRefreshToken = localStorage.getItem("refreshToken");
+  const oldRefreshToken = retrieve("refreshToken");
   const clientId = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
   if (!oldRefreshToken || !clientId) {
     console.error("Error with refresh token or client id", {
@@ -57,14 +58,14 @@ async function refreshToken() {
   const res = await fetch(url, payload);
   if (!res.ok) {
     console.error("Error refreshing token", res);
-    localStorage.removeItem("refreshToken");
-    localStorage.removeItem("accessToken");
+    remove("refreshToken");
+    remove("accessToken");
     return;
   }
 
   const { refreshToken, accessToken } = await res.json();
   if (refreshToken || accessToken) {
-    localStorage.setItem("refreshToken", refreshToken);
-    localStorage.setItem("accessToken", accessToken);
+    store("refreshToken", refreshToken);
+    store("accessToken", accessToken);
   }
 }

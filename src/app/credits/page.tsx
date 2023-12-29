@@ -8,6 +8,7 @@ import LoginButton from "@/components/LoginButton";
 import MyCarousel from "@/components/MyCarousel";
 import BackButton from "@/components/BackButton";
 import ErrorAlert from "@/components/ErrorAlert";
+import { retrieve, store } from "@/lib/storage";
 
 export interface ErrorResponse {
   status: number;
@@ -24,14 +25,14 @@ export default function Credits() {
   const token = useSearchParams().get("accessToken");
   const refreshToken = useSearchParams().get("refreshToken");
   if (token) {
-    localStorage.setItem("accessToken", token);
+    store("accessToken", token);
   }
 
   if (refreshToken) {
-    localStorage.setItem("refreshToken", refreshToken);
+    store("refreshToken", refreshToken);
   }
 
-  const storedToken = localStorage.getItem("accessToken");
+  const storedToken = retrieve("accessToken");
 
   return (
     <div className="flex flex-grow items-center justify-center bg-neutral-900">
@@ -40,7 +41,7 @@ export default function Credits() {
           <BackButton />
           <div className="relative flex flex-col items-center justify-center">
             <MyCarousel setCurrentTrackId={setCurrentTrackId} />
-            <div className="flex h-10 w-72 md:w-80 md:h-8 items-center justify-center">
+            <div className="flex h-10 w-72 items-center justify-center md:h-8 md:w-80">
               {error ? (
                 <ErrorAlert error={error} setError={setError} />
               ) : !storedToken ? (
