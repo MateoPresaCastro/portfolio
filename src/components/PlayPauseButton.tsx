@@ -3,7 +3,7 @@ import { pause, play } from "@/lib/spotify-api-service";
 import { IoPlaySharp, IoPauseSharp } from "react-icons/io5";
 import { ErrorResponse } from "@/app/credits/page";
 
-export default function SpotifyWebPlayer({
+export default function PlayPauseButton({
   token,
   currentTrackId,
   setError,

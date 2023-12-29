@@ -3,7 +3,7 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import { useSearchParams } from "next/navigation";
 import SONG_DATA from "./song-data";
-import SpotifyWebPlayer from "@/components/SpotifyWebPlayer";
+import PlayPauseButton from "@/components/PlayPauseButton";
 import LoginButton from "@/components/LoginButton";
 import MyCarousel from "@/components/MyCarousel";
 import BackButton from "@/components/BackButton";
@@ -44,7 +44,7 @@ export default function Credits() {
               {!storedToken ? (
                 <LoginButton />
               ) : (
-                <SpotifyWebPlayer
+                <PlayPauseButton
                   token={storedToken}
                   currentTrackId={currentTrackId}
                   setError={setError}
