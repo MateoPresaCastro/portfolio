@@ -105,7 +105,7 @@ const SONG_DATA: SongData[] = [
   },
   {
     image: beefJay,
-    artist: "Papi Trujillo ft Yung Beef",
+    artist: "Yung Beef ft Papi Trujillo",
     song: "Un Porno",
     album: "Beef Jay",
     year: "2019",
