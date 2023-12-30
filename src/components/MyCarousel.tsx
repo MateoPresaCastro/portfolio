@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import SONG_DATA from "@/song-data";
-import SongMetaData from "@/components/SongMetaData";
+import MetaData from "@/components/MetaData";
 import {
   Carousel,
   CarouselContent,
@@ -31,7 +31,7 @@ export default function MyCarousel() {
               placeholder="blur"
               blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAWlBMVEUPDAspGg88IhJgLxQXEA0iFg4yHhEUDgwbEw1ILBdwTC6QWi1aNx2PRxm2cjaWYTNSMBduNRWEUCmYVia8ZiU/JhSfaDklIB41LyxuOhh0RB6nXiiKXjgpIhQ02A65AAAAWklEQVQI1xXIRwKDMBAEsFl7Ky5UAyn/f2fCUUJMU9UIBjC27wODYZTznMP/idp73xdidrTj+JT3a80Ja2t7mbecFZSS1lAWRgxyJTEDYkniIswMInF2t+v+Ad17A7jiX4TKAAAAAElFTkSuQmCC"
             />
-            <SongMetaData {...data} />
+            <MetaData {...data} />
           </CarouselItem>
         ))}
       </CarouselContent>
