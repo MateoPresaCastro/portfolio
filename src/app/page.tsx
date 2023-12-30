@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main className="flex flex-grow items-center justify-center bg-neutral-900">
       <div className="m-10">
-        <div className="max-w-2xl text-neutral-100">
+        <div className="max-w-2xl text-neutral-50">
           {data.map((d, i) => {
             delay = i * 0.1;
             return (

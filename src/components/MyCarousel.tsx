@@ -22,7 +22,10 @@ export default function MyCarousel() {
       >
         <CarouselContent>
           {SONG_DATA.map(
-            ({ image, album, artist, song, year, youtubeLink }, index) => (
+            (
+              { image, album, artist, song, year, youtubeLink, producedBy },
+              index,
+            ) => (
               <CarouselItem key={index} className="basis-72 md:basis-96">
                 <div className="relative">
                   <Image
@@ -42,14 +45,15 @@ export default function MyCarousel() {
                       target="_blank"
                       className="flex items-center justify-start"
                     >
-                      <p className="w-auto cursor-pointer text-neutral-100 underline decoration-neutral-600 decoration-1 underline-offset-[2.5px] transition-all duration-300 hover:decoration-neutral-400">
+                      <p className="w-auto cursor-pointer text-neutral-50 underline decoration-neutral-600 decoration-1 underline-offset-[2.5px] transition-all duration-300 hover:decoration-neutral-400">
                         {`${artist} - ${song}`}
                       </p>
                       <HiArrowUpRight className="ml-1 text-sm text-neutral-400" />
                     </Link>
-                    <p className="className= text-neutral-300">{album}</p>
-                    <p className="className= text-xs text-neutral-500">
-                      {year}
+                    <p className="text-neutral-300">{album}</p>
+                    <p className="text-sm text-neutral-400">{year}</p>
+                    <p className="text-xs text-neutral-500">
+                      {`Produced by ${producedBy}`}
                     </p>
                   </div>
                 </div>
