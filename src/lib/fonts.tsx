@@ -1,7 +1,5 @@
 import { Newsreader } from "next/font/google";
 
-import type { ReactNode } from "react";
-
 const newsreader = Newsreader({
   subsets: ["latin"],
   style: "italic",
@@ -9,7 +7,7 @@ const newsreader = Newsreader({
   adjustFontFallback: false,
 });
 
-export function Italic({ children }: { children: string | ReactNode }) {
+export function It({ children }: { children: string }) {
   return (
     <span className={`${newsreader.className} text-[19px]`}>{children}</span>
   );

@@ -1,13 +1,13 @@
-import { Italic } from "@/lib/fonts";
+import { It } from "@/lib/fonts";
 
 export default function Name() {
   return (
     <>
       <h2>Mateo Presa Castro</h2>
       <div className={`mb-16 font-light text-neutral-300`}>
-        <Italic>Music</Italic>
+        <It>Music</It>
         {" and "}
-        <Italic>software.</Italic>
+        <It>software.</It>
       </div>
     </>
   );
