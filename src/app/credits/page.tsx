@@ -6,7 +6,7 @@ export default function Credits() {
   return (
     <div className="flex flex-grow items-center justify-center bg-neutral-900">
       <div className="m-10">
-        <div className="ml-2 max-w-2xl text-neutral-300">
+        <div className="ml-2 max-w-2xl text-neutral-100">
           <BackButton />
           <MyCarousel />
         </div>

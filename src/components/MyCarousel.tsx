@@ -32,7 +32,7 @@ export default function MyCarousel() {
                     alt="Song cover art"
                     priority
                     className="ml-1.5"
-                    // unoptimized
+                    unoptimized
                   />
                 </div>
                 <div className="flex justify-start">
@@ -42,12 +42,12 @@ export default function MyCarousel() {
                       target="_blank"
                       className="flex items-center justify-start"
                     >
-                      <p className="w-auto cursor-pointer underline decoration-neutral-600 decoration-1 underline-offset-[2.5px] transition-all duration-300 hover:decoration-neutral-400">
+                      <p className="w-auto cursor-pointer text-neutral-100 underline decoration-neutral-600 decoration-1 underline-offset-[2.5px] transition-all duration-300 hover:decoration-neutral-400">
                         {`${artist} - ${song}`}
                       </p>
-                      <HiArrowUpRight className="ml-1 text-neutral-600" />
+                      <HiArrowUpRight className="ml-1 text-sm text-neutral-400" />
                     </Link>
-                    <p className="className= text-neutral-500">{album}</p>
+                    <p className="className= text-neutral-300">{album}</p>
                     <p className="className= text-xs text-neutral-500">
                       {year}
                     </p>
@@ -59,11 +59,11 @@ export default function MyCarousel() {
         </CarouselContent>
         <CarouselPrevious
           variant={"ghost"}
-          className="text-neutral-300 transition-all duration-300 hover:bg-neutral-900 hover:text-neutral-500"
+          className="text-neutral-200 transition-all duration-300 hover:bg-neutral-900 hover:text-neutral-500"
         />
         <CarouselNext
           variant={"ghost"}
-          className="text-neutral-300 transition-all duration-300 hover:bg-neutral-900 hover:text-neutral-500"
+          className="text-neutral-200 transition-all duration-300 hover:bg-neutral-900 hover:text-neutral-500"
         />
       </Carousel>
     </div>

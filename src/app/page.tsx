@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main className="flex flex-grow items-center justify-center bg-neutral-900">
       <div className="m-10">
-        <div className="max-w-2xl text-neutral-300">
+        <div className="max-w-2xl text-neutral-100">
           {data.map((d, i) => {
             delay = i * 0.1;
             return (
@@ -64,7 +64,7 @@ function Section({
         style={{ animationDelay: `${delay}s` }}
       >
         <div
-          className={`mb-16 font-light text-neutral-400 opacity-0 ${
+          className={`mb-16 font-light text-neutral-300 opacity-0 ${
             descClass ?? ""
           } animate-fadeIn`}
           style={{ animationDelay: `${delay}s` }}
