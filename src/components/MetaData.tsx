@@ -18,7 +18,7 @@ export default function MetaData(p: MetaDataProps) {
         className="flex items-center justify-start"
         target="_blank"
       >
-        <p className="w-auto cursor-pointer font-semibold text-neutral-50 underline decoration-neutral-600 decoration-1 underline-offset-[2.5px] transition-all duration-300 hover:decoration-neutral-400">
+        <p className="w-auto cursor-pointer font-semibold text-neutral-50 underline decoration-neutral-600 decoration-1 underline-offset-[2.5px] transition-all duration-300 hover:decoration-neutral-300">
           {`${p.artist} - ${p.song}`}
         </p>
         <HiArrowUpRight className="ml-1 text-sm text-neutral-400" />
