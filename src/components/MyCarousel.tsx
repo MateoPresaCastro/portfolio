@@ -34,6 +34,7 @@ export default function MyCarousel() {
                 alt="Song cover art"
                 priority
                 className="ml-1.5"
+                unoptimized
               />
               <SongMetaData
                 album={album}
