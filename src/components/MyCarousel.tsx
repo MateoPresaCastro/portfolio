@@ -9,14 +9,14 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-export default function MyCarousel() {
-  const opts = {
-    align: "start",
-    loop: true,
-  };
+const OPTS = {
+  align: "start",
+  loop: true,
+};
 
+export default function MyCarousel() {
   return (
-    <Carousel opts={opts} className="w-72 max-w-sm md:w-full lg:md:w-full">
+    <Carousel opts={OPTS} className="w-72 max-w-sm md:w-full lg:md:w-full">
       <CarouselContent>
         {SONG_DATA.map(({ image, id, ...data }) => (
           <CarouselItem key={id} className="basis-72 md:basis-96">

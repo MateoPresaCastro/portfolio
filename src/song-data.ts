@@ -12,6 +12,7 @@ import weDifferent from "../public/joe-moses.jpeg";
 import kyb from "../public/kyb.jpg";
 import saniser from "../public/saniser.jpg";
 import waves from "../public/waves.jpeg";
+
 import type { StaticImageData } from "next/image";
 
 interface SongData {
