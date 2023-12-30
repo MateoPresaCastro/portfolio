@@ -31,8 +31,8 @@ export default function MyCarousel() {
                     height={550}
                     alt="Song cover art"
                     priority
-                    unoptimized
                     className="ml-1.5"
+                    // unoptimized
                   />
                 </div>
                 <div className="flex justify-start">
