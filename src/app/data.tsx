@@ -1,4 +1,5 @@
 import { Newsreader } from "next/font/google";
+import Link from "next/link";
 
 const newsreader = Newsreader({
   subsets: ["latin"],
@@ -31,7 +32,11 @@ const data = [
   },
   {
     title: "Connect",
-    content: "mateopresacastro@gmail.com",
+    content: (
+      <Link href={"mailto:mateopresacastro@gmail.com"}>
+        mateopresacastro@gmail.com
+      </Link>
+    ),
     descClass:
       "cursor-pointer underline underline-offset-[2.5px] decoration-neutral-600 hover:decoration-neutral-400 w-auto transition-all duration-300 decoration-1",
   },
