@@ -26,8 +26,10 @@ export default function MyCarousel() {
               width={550}
               height={550}
               alt="Song cover art"
-              priority
+              priority={id === 1}
               className="ml-1.5"
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAWlBMVEUPDAspGg88IhJgLxQXEA0iFg4yHhEUDgwbEw1ILBdwTC6QWi1aNx2PRxm2cjaWYTNSMBduNRWEUCmYVia8ZiU/JhSfaDklIB41LyxuOhh0RB6nXiiKXjgpIhQ02A65AAAAWklEQVQI1xXIRwKDMBAEsFl7Ky5UAyn/f2fCUUJMU9UIBjC27wODYZTznMP/idp73xdidrTj+JT3a80Ja2t7mbecFZSS1lAWRgxyJTEDYkniIswMInF2t+v+Ad17A7jiX4TKAAAAAElFTkSuQmCC"
             />
             <SongMetaData {...data} />
           </CarouselItem>
