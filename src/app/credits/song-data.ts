@@ -44,7 +44,7 @@ const SONG_DATA: SongData[] = [
   },
   {
     image: el2,
-    artist: "Eladio Carrion fr Beny Jr",
+    artist: "Eladio Carrion ft Beny Jr",
     song: "Red Bull",
     year: "2021",
     youtubeLink: "https://youtu.be/lA0INn4zNlk?si=PU6V4DcT5D_uE-rU",
