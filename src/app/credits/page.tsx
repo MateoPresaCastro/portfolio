@@ -1,4 +1,3 @@
-"use client";
 import MyCarousel from "@/components/MyCarousel";
 import BackButton from "@/components/BackButton";
 

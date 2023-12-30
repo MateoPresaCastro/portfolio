@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import SONG_DATA from "@/song-data";
 import SongMetaData from "@/components/SongMetaData";

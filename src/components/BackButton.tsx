@@ -5,6 +5,8 @@ import { ArrowLeftIcon } from "@radix-ui/react-icons";
 const newsreader = Newsreader({
   subsets: ["latin"],
   style: "italic",
+  display: 'swap',
+  adjustFontFallback: false
 });
 
 export default function BackButton() {
