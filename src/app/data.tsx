@@ -20,7 +20,7 @@ const data = [
   },
   {
     title: "Current position",
-    content: "Software engineer @ Viaplay's payments team.",
+    content: "Software engineer @ Viaplay.",
   },
   {
     title: "Credits",
