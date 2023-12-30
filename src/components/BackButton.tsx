@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
-import { Italic } from "@/fonts";
+import { Italic } from "@/lib/fonts";
 
 export default function BackButton() {
   return (

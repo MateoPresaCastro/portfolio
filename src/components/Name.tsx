@@ -1,4 +1,4 @@
-import { Italic } from "@/fonts";
+import { Italic } from "@/lib/fonts";
 
 export default function Name() {
   return (
