@@ -19,13 +19,13 @@ export default function SongMetaData({
   youtubeLink,
 }: SongMetaDataProps) {
   return (
-    <div className="ml-2 mt-2 flex flex-col justify-start">
+    <div className="ml-2 mt-2 flex flex-col justify-start font-light">
       <Link
         href={youtubeLink}
         target="_blank"
         className="flex items-center justify-start"
       >
-        <p className="w-auto font-semibold cursor-pointer text-neutral-50 underline decoration-neutral-600 decoration-1 underline-offset-[2.5px] transition-all duration-300 hover:decoration-neutral-400">
+        <p className="w-auto cursor-pointer font-semibold text-neutral-50 underline decoration-neutral-600 decoration-1 underline-offset-[2.5px] transition-all duration-300 hover:decoration-neutral-400">
           {`${artist} - ${song}`}
         </p>
         <HiArrowUpRight className="ml-1 text-sm text-neutral-400" />

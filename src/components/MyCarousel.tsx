@@ -1,7 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
-import SONG_DATA from "@/app/credits/song-data";
-import { HiArrowUpRight } from "react-icons/hi2";
+import SONG_DATA from "@/song-data";
+import SongMetaData from "@/components/SongMetaData";
 import {
   Carousel,
   CarouselContent,
@@ -9,44 +8,29 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import SongMetaData from "./SongMetaData";
 
 export default function MyCarousel() {
+  const opts = {
+    align: "start",
+    loop: true,
+  };
+
   return (
-    <Carousel
-      opts={{
-        align: "start",
-        loop: true,
-      }}
-      className="w-72 max-w-sm md:w-full lg:md:w-full"
-    >
+    <Carousel opts={opts} className="w-72 max-w-sm md:w-full lg:md:w-full">
       <CarouselContent>
-        {SONG_DATA.map(
-          (
-            { image, album, artist, song, year, youtubeLink, producedBy },
-            index,
-          ) => (
-            <CarouselItem key={index} className="basis-72 md:basis-96">
-              <Image
-                src={image}
-                width={550}
-                height={550}
-                alt="Song cover art"
-                priority
-                className="ml-1.5"
-                unoptimized
-              />
-              <SongMetaData
-                album={album}
-                artist={artist}
-                song={song}
-                year={year}
-                youtubeLink={youtubeLink}
-                producedBy={producedBy}
-              />
-            </CarouselItem>
-          ),
-        )}
+        {SONG_DATA.map(({ image, id, ...data }) => (
+          <CarouselItem key={id} className="basis-72 md:basis-96">
+            <Image
+              src={image}
+              width={550}
+              height={550}
+              alt="Song cover art"
+              priority
+              className="ml-1.5"
+            />
+            <SongMetaData {...data} />
+          </CarouselItem>
+        ))}
       </CarouselContent>
       <CarouselPrevious
         variant={"ghost"}
