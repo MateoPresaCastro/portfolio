@@ -1,4 +1,5 @@
 import { Newsreader } from "next/font/google";
+
 import type { ReactNode } from "react";
 
 const newsreader = Newsreader({
