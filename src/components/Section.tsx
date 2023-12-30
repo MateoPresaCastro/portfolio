@@ -21,7 +21,7 @@ export default function Section({
         className="translate-y-[10px] animate-moveUp"
         style={{ animationDelay: `${delay}s` }}
       >
-        <h1
+        <h2
           className={`animate-fadeIn opacity-0 ${titleClass ?? ""}`}
           style={{ animationDelay: `${delay}s` }}
         >
@@ -30,16 +30,16 @@ export default function Section({
           ) : (
             <div>{title}</div>
           )}
-        </h1>
+        </h2>
       </div>
       <div
         className="translate-y-[10px] animate-moveUp"
         style={{ animationDelay: `${delay}s` }}
       >
         <div
-          className={`mb-16 font-light text-neutral-300 opacity-0 ${
+          className={`mb-16 animate-fadeIn font-light text-neutral-300 opacity-0 ${
             descClass ?? ""
-          } animate-fadeIn`}
+          }`}
           style={{ animationDelay: `${delay}s` }}
         >
           {content}
