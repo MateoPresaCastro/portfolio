@@ -63,7 +63,7 @@ const SONG_DATA: SongData[] = [
     image: moses,
     artist: "Joe Moses",
     song: "We Different",
-    album: "West SyoutubeLinke II",
+    album: "West Side II",
     year: "2020",
     youtubeLink: "https://youtu.be/UKFCXU5JY64?si=rDpP8XSHni5ZBU1Y",
     producedBy: "Mateo Presa and KanielTheOne",
