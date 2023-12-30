@@ -1,11 +1,4 @@
-import { Newsreader } from "next/font/google";
-
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  style: "italic",
-  display: 'swap',
-  adjustFontFallback: false
-});
+import { Italic } from "@/fonts";
 
 export default function Name() {
   return (
@@ -17,11 +10,5 @@ export default function Name() {
         <Italic>software.</Italic>
       </div>
     </>
-  );
-}
-
-function Italic({ children }: { children: string }) {
-  return (
-    <span className={`${newsreader.className} text-[19px]`}>{children}</span>
   );
 }
