@@ -80,7 +80,7 @@ const SONG_DATA: SongData[] = [
     artist: "Beny Jr ft Morad",
     song: "K y B",
     album: "30",
-    year: "2022",
+    year: "2020",
     youtubeLink: "https://youtu.be/lJ_ViAV1uLk?si=MunP0-pPEgvYnUJV",
     producedBy: "Mateo Presa and SHB",
     id: 6,
