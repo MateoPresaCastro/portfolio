@@ -16,6 +16,10 @@ const OPTS = {
 };
 
 export default function MyCarousel() {
+  const priority = (id: number) => {
+    return id === 1 || id === 2 || id === SONG_DATA.length;
+  };
+
   return (
     <Carousel opts={OPTS} className="w-72 max-w-sm md:w-full lg:md:w-full">
       <CarouselContent>
@@ -26,7 +30,7 @@ export default function MyCarousel() {
               width={550}
               height={550}
               alt="Song cover art"
-              priority={id === 1}
+              priority={priority(id)}
               className="ml-1.5"
             />
             <MetaData {...data} />
