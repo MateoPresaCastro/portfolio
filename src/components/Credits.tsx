@@ -9,7 +9,7 @@ export default function Credits() {
       >
         Credits
       </Link>
-      <p className={`mb-16 font-light text-neutral-300`}>
+      <p className={`mb-8 font-light text-neutral-300`}>
         Reezy, Eladio Carrion, Morad, Yung Beef...
       </p>
     </>
