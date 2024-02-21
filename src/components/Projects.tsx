@@ -8,10 +8,18 @@ export default function Position() {
         <Link
           href="https://www.wheretomove.eu"
           target="_blank"
-          className="mb-8 flex w-auto cursor-pointer items-center justify-start font-light text-neutral-300 underline decoration-neutral-500 decoration-1 underline-offset-[2.5px] transition-all duration-300 hover:decoration-neutral-300"
+          className="flex w-auto cursor-pointer items-center justify-start font-light text-neutral-300 underline decoration-neutral-500 decoration-1 underline-offset-[2.5px] transition-all duration-300 hover:decoration-neutral-300"
         >
           <DashIcon className="mr-1" />
           wheretomove.eu
+        </Link>
+        <Link
+          href="https://www.wheretomove.eu"
+          target="_blank"
+          className="mb-8 flex w-auto cursor-pointer items-center justify-start font-light text-neutral-300 underline decoration-neutral-500 decoration-1 underline-offset-[2.5px] transition-all duration-300 hover:decoration-neutral-300"
+        >
+          <DashIcon className="mr-1" />
+          convolve.me
         </Link>
       </div>
     </>
