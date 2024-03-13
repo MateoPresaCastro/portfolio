@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import MainWrapper from "@/components/MainWrapper";
+import ThemeProvider from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,10 +22,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} flex min-h-screen flex-col antialiased`}
+        className={`${inter.className} flex min-h-screen flex-col bg-neutral-100 antialiased dark:bg-neutral-900`}
       >
-        <MainWrapper>{children}</MainWrapper>
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <MainWrapper>{children}</MainWrapper>
+          <Footer />
+        </ThemeProvider>
         <Analytics />
         <SpeedInsights />
       </body>

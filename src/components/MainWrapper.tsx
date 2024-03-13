@@ -5,7 +5,7 @@ export default function MainWrapper({
 }) {
   return (
     <main className="flex flex-grow items-center justify-center">
-      <div className="m-10 ml-12 max-w-2xl text-neutral-50">{children}</div>
+      <div className="m-10 ml-12 max-w-2xl dark:text-neutral-50 text-neutral-800">{children}</div>
     </main>
   );
 }
