@@ -22,14 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} flex min-h-screen flex-col bg-neutral-100 antialiased dark:bg-neutral-900`}
+        className={`${inter.className} flex min-h-screen flex-col bg-white antialiased dark:bg-neutral-900`}
+        suppressHydrationWarning
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class">
           <MainWrapper>{children}</MainWrapper>
           <Footer />
         </ThemeProvider>
