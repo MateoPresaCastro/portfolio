@@ -1,10 +1,15 @@
 import Link from "next/link";
+
+import Title from "@/components/Title";
+import Text from "@/components/Text";
+
 import { DashIcon } from "@radix-ui/react-icons";
+
 export default function Position() {
   return (
     <>
-      <h2 className="font-medium">Projects</h2>
-      <div className="mb-8 text-neutral-600 dark:text-neutral-300">
+      <Title>Projects</Title>
+      <Text>
         <Link
           href="https://www.wheretomove.eu"
           target="_blank"
@@ -13,7 +18,7 @@ export default function Position() {
           <DashIcon className="mr-1" />
           wheretomove.eu
         </Link>
-      </div>
+      </Text>
     </>
   );
 }

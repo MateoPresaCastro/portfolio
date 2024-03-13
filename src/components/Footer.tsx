@@ -9,10 +9,10 @@ export default function Footer() {
           target="_blank"
           href="https://github.com/MateoPresaCastro/portfolio"
         >
-          <FaGithub className="mx-3 cursor-pointer transition-all duration-300 hover:text-neutral-500 dark:hover:text-neutral-500" />
+          <FaGithub className="mx-3 cursor-pointer transition-all duration-300 hover:text-neutral-400 dark:hover:text-neutral-500" />
         </Link>
         <Link target="_blank" href="https://www.linkedin.com/in/mateopresa/">
-          <FaLinkedin className="mx-3 cursor-pointer transition-all duration-300 hover:text-neutral-500 dark:hover:text-neutral-500" />
+          <FaLinkedin className="mx-3 cursor-pointer transition-all duration-300 hover:text-neutral-400 dark:hover:text-neutral-500" />
         </Link>
       </div>
     </footer>

@@ -9,6 +9,8 @@ const newsreader = Newsreader({
 
 export function It({ children }: { children: string }) {
   return (
-    <span className={`${newsreader.className} text-[19px]`}>{children}</span>
+    <span className={`${newsreader.className} flex flex-row text-[19px]`}>
+      {children}
+    </span>
   );
 }

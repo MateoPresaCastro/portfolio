@@ -1,14 +1,12 @@
 import { It } from "@/lib/fonts";
+import Title from "@/components/Title";
+import Text from "@/components/Text";
 
 export default function Name() {
   return (
     <>
-      <h2 className="font-medium">Mateo Presa Castro</h2>
-      <div className={`mb-8 text-neutral-600 dark:text-neutral-300`}>
-        <It>Music</It>
-        {" and "}
-        <It>software.</It>
-      </div>
+      <Title>Mateo Presa Castro</Title>
+      <Text>Music and software.</Text>
     </>
   );
 }
