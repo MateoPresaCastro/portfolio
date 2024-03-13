@@ -12,7 +12,7 @@ interface MetaDataProps {
 
 export default function MetaData(p: MetaDataProps) {
   return (
-    <div className="ml-2 mt-2 flex flex-col justify-start font-light">
+    <div className="ml-2 mt-2 flex flex-col justify-start ">
       <Link
         href={p.youtubeLink}
         className="flex items-center justify-start"
@@ -21,10 +21,10 @@ export default function MetaData(p: MetaDataProps) {
         <p className="w-auto cursor-pointer font-semibold text-neutral-50 underline decoration-neutral-500 decoration-1 underline-offset-[2.5px] transition-all duration-300 hover:decoration-neutral-300">
           {`${p.artist} - ${p.song}`}
         </p>
-        <HiArrowUpRight className="ml-1 text-sm text-neutral-400" />
+        <HiArrowUpRight className="ml-1 text-sm text-neutral-500" />
       </Link>
       {p.album && <p className="text-neutral-300">{p.album}</p>}
-      <p className="text-sm text-neutral-400">{p.year}</p>
+      <p className="text-sm text-neutral-500">{p.year}</p>
       <p className="text-xs text-neutral-500">{`Produced by ${p.producedBy}`}</p>
     </div>
   );

@@ -1,11 +1,15 @@
 import "./globals.css";
-import Footer from "@/components/Footer";
+
 import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import type { Metadata } from "next";
+import { cn } from "@/lib/utils";
+
 import MainWrapper from "@/components/MainWrapper";
 import ThemeProvider from "@/components/theme-provider";
+import Footer from "@/components/Footer";
+
+import type { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} flex min-h-screen flex-col bg-white antialiased dark:bg-neutral-900`}
+        className={cn(
+          `${inter.className} flex min-h-screen flex-col bg-white tracking-tight text-black antialiased dark:bg-neutral-900`,
+        )}
         suppressHydrationWarning
       >
         <ThemeProvider attribute="class">
