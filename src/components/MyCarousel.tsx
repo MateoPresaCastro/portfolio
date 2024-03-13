@@ -39,11 +39,11 @@ export default function MyCarousel() {
       </CarouselContent>
       <CarouselPrevious
         variant={"ghost"}
-        className="text-neutral-200 transition-all duration-300 hover:bg-neutral-900 hover:text-neutral-500"
+        className="text-neutral-600 transition-all duration-300 dark:text-neutral-500 dark:hover:text-neutral-300"
       />
       <CarouselNext
         variant={"ghost"}
-        className="text-neutral-200 transition-all duration-300 hover:bg-neutral-900 hover:text-neutral-500"
+        className="text-neutral-600 transition-all duration-300 dark:text-neutral-500 dark:hover:text-neutral-300"
       />
     </Carousel>
   );
