@@ -4,7 +4,7 @@ export default function Text({
   children: string | React.ReactNode;
 }) {
   return (
-    <p className="mb-8 text-sm text-neutral-500 dark:text-neutral-400">
+    <p className="mb-8 text-neutral-500 dark:text-neutral-400">
       {children}
     </p>
   );
